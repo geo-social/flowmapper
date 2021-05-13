@@ -1,5 +1,6 @@
-# FlowMapper Data
+# FlowMapper
 
+## Data
 The data used in the FlowMapper paper is published here. The datasets included are as follows:
 
 * [Banana food flows](Bananas/): Banana food flows within South America from 2019 (FAO, 2021).
