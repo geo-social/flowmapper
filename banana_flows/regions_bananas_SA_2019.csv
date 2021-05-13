@@ -1,0 +1,10 @@
+﻿Country_ID,Country,Item Code,Item,Year,Unit,Imports,Exports,Net_Flow,Total_Flow,Net_Flow_Ratio
+9,Argentina,486,Bananas,2019,tonnes,433273,64,433209,433337,0.999704618
+19,Bolivia,486,Bananas,2019,tonnes,0,109258,-109258,109258,-1
+21,Brazil,486,Bananas,2019,tonnes,17,56883,-56866,56900,-0.99940246
+40,Chile,486,Bananas,2019,tonnes,245634,1,245633,245635,0.999991858
+44,Colombia,486,Bananas,2019,tonnes,1860,2728,-868,4588,-0.189189189
+58,Ecuador,486,Bananas,2019,tonnes,0,476001,-476001,476001,-1
+169,Paraguay,486,Bananas,2019,tonnes,64,66730,-66666,66794,-0.99808366
+170,Peru,486,Bananas,2019,tonnes,3,449,-446,452,-0.986725664
+234,Uruguay,486,Bananas,2019,tonnes,50857,0,50857,50857,1
