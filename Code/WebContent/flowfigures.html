@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#FlowDrawing {
+  position: absolute;
+  width: 100%;
+  height: 90%;
+  left: 0;
+  top: 0;
+}
+
+#ControlPanel {
+  background-color: red;
+  position: absolute;
+  width: 100%;
+  height: 10%;
+  left: 0;
+  bottom: 0;
+}
+</style>
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+
+<meta charset="ISO-8859-1">
+<title>Flow Figures</title>
+</head>
+<body>
+	<div id="FlowDrawing">
+	</div>
+	<div id="ControlPanel">
+		<ul class="list-group">
+	    <li class="list-group-item">
+		    <label>Choose the flow style:&nbsp;</label>
+		    <select id="flowStyle-Select">
+				<option value="curve">Curve</option>
+				<option value="strtHfArw">Straight Half Arrow</option>
+				<option value="tapered">Tapered</option>
+				<option value="tearDrop">Tear Drop</option>
+			</select>
+			<div class="form-check" style="display: inline;width: 10px;">
+				<input class="form-check-input" type="checkbox" id="MarkControlPoints-CB" style="margin-top: 7px;margin-left: -15px;">
+				<label class="form-check-label" for="formCheck-1" style="left: 0px;">Mark Control Points<br></label>
+			</div>
+			<div class="form-check" style="display: inline;width: 10px;">
+				<input class="form-check-input" type="checkbox" id="DisplayMultipleFlows-CB" style="margin-top: 7px;margin-left: -15px;">
+				<label class="form-check-label" for="formCheck-1" style="left: 0px;">Display Multiple Flows<br></label>
+			</div>
+			<button id="ExportSVG-Btn" class="btn btn-primary">Export SVG</button>
+		</li>
+  	</ul>
+	</div>
+</body>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/support/d3.js"></script>
+<script src="assets/js/DrawFlows.js"></script>
+<script src="assets/js/Export.js"></script>
+<script>
+var paintingSVG = d3.selectAll("#FlowDrawing")
+					.append("svg")
+					.attr("id", "Painting-SVG")
+					.attr("width", $("#FlowDrawing").width())
+					.attr("height",$("#FlowDrawing").height());
+var flowGraph = paintingSVG.append("g")
+					.attr("id", "Flow-Graph");
+var pointGraph = paintingSVG.append("g")
+					.attr("id", "Point-Graph");
+var markGraph = paintingSVG.append("g")
+.attr("id", "Mark-Graph");
+					
+//const flowData = [{"x1": 200, "y1": 300, "x2": 400, "y2": 250}, {"x1": 400, "y1": 250, "x2": 800, "y2": 100}, {"x1": 400, "y1": 250, "x2": 200, "y2": 300}];
+const points = [{x: 400, y: 600, radius: 6, prioritized: false},
+				{x: 800, y: 500, radius: 20, prioritized: true},
+				{x: 1200, y: 200, radius: 12, prioritized: true}];
+
+const flows = [{origin: points[0], destination: points[1], width: 20, prioritized: false},
+				{origin: points[1], destination: points[2], width: 100, prioritized: true},
+				{origin: points[1], destination: points[0], width: 60, prioritized: false}];
+//var pointData = [];
+//const pointRadius = [6, 13.5, 13.5, 12, 13.5, 6];
+var controlPoints = [], regularPoints = [], elbowPoints = [];
+
+var flowStyle = chooseFlowStyle();
+
+drawFlows(); 
+					
+drawPoints();
+
+drawMarks();
+
+function chooseFlowStyle() {
+	switch($("#flowStyle-Select").val()){
+		case "curve":{
+			return drawCurve;
+		};
+		case "strtHfArw" :{
+			return drawStraightWithArrow;
+		};
+		case "tapered" :{
+			return drawTapered;
+		};
+		case "tearDrop" :{
+			return drawTearDrop;
+		};
+		default:{
+			console.log("Undefined flow style.");
+		}
+	}
+}
+
+function getCoordinatesFromPath(str){
+	var commands = str.split(/(?=[LMCZ])/);
+	pairsArray = [];
+	commands.map(function(d){
+	    var pointsArray = d.slice(1, d.length).split(/,| /);
+	    for(var i = 0; i < pointsArray.length; i += 2){
+	    	if(pointsArray[i] && pointsArray[i+1])
+	        pairsArray.push([+pointsArray[i], +pointsArray[i+1]]);
+	    }
+	    return pairsArray;
+	})
+	return pairsArray;
+}
+
+function drawFlows(){
+	controlPoints = [], regularPoints = [], elbowPoints = [];
+	var test = $('#DisplayMultipleFlows-CB').is(":checked");
+	var flowsFeatures = flowGraph.selectAll("path")
+			.data(flows)
+			.enter().append("path")
+			.attr("d", function(d){
+				if($('#DisplayMultipleFlows-CB').is(":checked")){
+					return flowStyle(d.origin.x, d.origin.y, d.destination.x, d.destination.y, d.width, d.origin.radius, d.destination.radius);
+				}else{
+					return d.prioritized ? flowStyle(d.origin.x, d.origin.y, d.destination.x, d.destination.y, d.width, d.origin.radius, d.destination.radius) : "";
+				}
+			})
+			.attr("fill", "#b5b5b5");
+	return flowsFeatures;
+}
+
+function drawPoints(){
+	var graphCircles = pointGraph.selectAll("circle")
+			.data(points)
+			.enter().append("circle")
+			.attr("r", function(d){
+				return d.radius;
+			})
+			.style("stroke", "black")
+			.style("fill", "none")
+			.style("stroke-width", 1)
+			.attr("cx", d => d.x)
+			.attr("cy", d => d.y)
+			.style("display", function(d){
+				if($('#DisplayMultipleFlows-CB').is(":checked")){
+					return "block";
+				}else{
+					return d.prioritized ? "block" : "none";
+				}
+			});
+	
+}
+
+function drawMarks(){
+	var crosses = controlPoints.concat(elbowPoints), circles = regularPoints;
+	// "+"/circle style
+	var graphCrosses = markGraph.selectAll("text")
+	.data(crosses)
+	.enter();
+	
+	var circles = graphCrosses.append("circle")
+	.attr("class", "ControlPoints")
+	.attr("id", d => d.name.replace(",", "-"))
+	.attr("cx", d => d.coordinates[0])
+	.attr("cy", d => d.coordinates[1])
+	.attr("r", 3)
+	//.attr("dy", "0.3em")
+	.style("stroke", "black")
+	.style("fill", "none")
+	.style("stroke-width", 0.5)
+	.style("text-anchor", "middle")
+	.style("font-size", "1.5em")
+	//.text("+")
+	
+	var circleLabels = graphCrosses.append("text")
+	.attr("class", "ControlPointLabels")
+	.attr("id", d => d.name.replace(",", "-") + "_label")
+	.attr("x", d => d.coordinates[0] + 8)
+	.attr("y", d => d.coordinates[1])
+	.attr("dy", "0.3em")
+	.style("stroke-width", 0)
+	.style("text-anchor", "start")
+	.style("font-size", "1.15em")
+	.style("display", $('#DisplayMultipleFlows-CB').is(":checked") ? "none" : "block")
+	.text(d => d.name);
+	
+	var startAndEndCircles = graphCrosses.data(regularPoints)
+			.append("circle")
+			.attr("class", "StartAndEndPoints")
+			.attr("id", d => d.name.replace(",", "-"))
+			.attr("r", 3)
+			.style("stroke", "black")
+			.style("fill", "none")
+			.style("stroke-width", 0.5)
+			.attr("cx", d => d.coordinates[0])
+			.attr("cy", d => d.coordinates[1])
+			
+	var originCircleLabels = graphCrosses.data(regularPoints)
+			.append("text")
+			.attr("class", "StartAndEndPointLabels")
+			.attr("id", d => d.name.replace(",", "-") + "_label")
+			.attr("x", d => d.coordinates[0] + 10)
+			.attr("y", d => d.coordinates[1] + 7)
+			.attr("dy", "0.3em")
+			.style("stroke-width", 0)
+			.style("text-anchor", "start")
+			.style("font-size", "1.15em")
+			.style("display", $('#DisplayMultipleFlows-CB').is(":checked") ? "none" : "block")
+			.text(d => d.name);
+
+	/*	var symbol = d3.symbol().type(d3.symbolCross).size(50);
+	var graphCrosses = pointGraph.selectAll("path")
+	.data(crosses)
+	.enter().append("path")
+	.attr("d", symbol)
+	.attr("transform", function(d){
+		return "translate(" + d[0] + "," + d[1] + ")";
+	})
+	.style("stroke", "black")
+	.style("fill", "black")
+	.style("text-anchor", "middle")
+	.style("font-size", "0.75em");
+	*/	
+}
+
+function markControlPoints(){
+	// Coloring the control points
+	markGraph.select('#CP1_C1').style("stroke", "red").style("stroke-width", 2);
+	markGraph.select('#CP2_C1').style("stroke", "red").style("stroke-width", 2);
+	markGraph.select('#CP2_C2').style("stroke", "blue").style("stroke-width", 2);
+	markGraph.select('#CP1_C2').style("stroke", "blue").style("stroke-width", 2);
+	
+	// Draw lines:
+	const lines = [
+		// xc1,yc1 to xc13rd,yc13rd
+		[[markGraph.select('#P1').attr("cx"), markGraph.select('#P1').attr("cy")], [markGraph.select('#CP1_C1').attr("cx"), markGraph.select('#CP1_C1').attr("cy")]],
+		// xc23rd,yc23rd to xc2,yc2
+		[[markGraph.select('#CP2_C1').attr("cx"), markGraph.select('#CP2_C1').attr("cy")], [markGraph.select('#P2').attr("cx"), markGraph.select('#P2').attr("cy")]],
+		// x3,y3 to x23rd,y23rd 
+		[[markGraph.select('#P3').attr("cx"), markGraph.select('#P3').attr("cy")], [markGraph.select('#CP1_C2').attr("cx"), markGraph.select('#CP1_C2').attr("cy")]],
+		// x13rd,y13rd to x0,y0 
+		[[markGraph.select('#CP2_C2').attr("cx"), markGraph.select('#CP2_C2').attr("cy")], [markGraph.select('#P0').attr("cx"), markGraph.select('#P0').attr("cy")]],
+	]
+	markGraph.selectAll("line")
+	.data(lines).enter()
+	.append("line")
+	.style("stroke", (d, i) => i < 2 ? "red" : "blue")
+    .style("stroke-width", 2)
+    .style("stroke-dasharray", "5,5")
+	.attr("x1", d => d[0][0])
+    .attr("y1", d => d[0][1])
+    .attr("x2", d => d[1][0])
+    .attr("y2", d => d[1][1]);
+	
+	markGraph.append("path")
+	.attr("id", "MarkedCurve_red")
+	.attr("d", constructPathOfBezierCurve([markGraph.select('#P1').attr("cx"), markGraph.select('#P1').attr("cy")], [markGraph.select('#CP1_C1').attr("cx"), markGraph.select('#CP1_C1').attr("cy")], [markGraph.select('#CP2_C1').attr("cx"), markGraph.select('#CP2_C1').attr("cy")], [markGraph.select('#P2').attr("cx"), markGraph.select('#P2').attr("cy")]))
+	.style("stroke", "red")
+	.style("fill", "none")
+	
+	markGraph.append("path")
+	.attr("id", "MarkedCurve_blue")
+	.attr("d", constructPathOfBezierCurve([markGraph.select('#P3').attr("cx"), markGraph.select('#P3').attr("cy")], [markGraph.select('#CP1_C2').attr("cx"), markGraph.select('#CP1_C2').attr("cy")], [markGraph.select('#CP2_C2').attr("cx"), markGraph.select('#CP2_C2').attr("cy")], [markGraph.select('#P0').attr("cx"), markGraph.select('#P0').attr("cy")]))
+	.style("stroke", "blue")
+	.style("fill", "none")
+}
+
+function constructPathOfBezierCurve(start, origin, controlPoint, destination){
+	return "M" + start[0] + "," + start[1] + 
+	" C" + origin[0] + "," + origin[1] + " " + + controlPoint[0] + "," + controlPoint[1] + " " + + destination[0] + "," + destination[1];
+}
+
+function unmarkControlPoints(){
+	markGraph.select('#CP1_C1').style("stroke", "black").style("stroke-width", 0.5);
+	markGraph.select('#CP2_C1').style("stroke", "black").style("stroke-width", 0.5);
+	markGraph.select('#CP2_C2').style("stroke", "black").style("stroke-width", 0.5);
+	markGraph.select('#CP1_C2').style("stroke", "black").style("stroke-width", 0.5);
+	markGraph.selectAll("line").remove();
+	markGraph.select('#MarkedCurve_red').remove();
+	markGraph.select('#MarkedCurve_blue').remove();
+}
+
+function cleanTheDrawing(){
+	flowGraph.selectAll('*').remove();
+	pointGraph.selectAll('*').remove();
+	markGraph.selectAll('*').remove();
+}
+
+$("#flowStyle-Select, #DisplayMultipleFlows-CB").change(function(){
+	cleanTheDrawing();
+	flowStyle = chooseFlowStyle();
+	drawFlows(); 
+	drawPoints();
+	if(!$('#DisplayMultipleFlows-CB').is(":checked")){
+		drawMarks();
+	}
+	$("#MarkControlPoints-CB").change();
+})
+
+$("#MarkControlPoints-CB").change(function(){
+	if($("#MarkControlPoints-CB").is(":checked")){
+		markControlPoints();
+	}else{
+		unmarkControlPoints();
+	}
+})
+
+$("#ExportSVG-Btn").click(function(){
+	exportSVG(paintingSVG, "flow figures");
+})
+</script>
+</html>

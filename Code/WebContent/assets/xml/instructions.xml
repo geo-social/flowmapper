@@ -1,0 +1,276 @@
+<help>
+	<baseMapTab>
+		<BaseMap>
+			<h>Base Map</h>
+			<p>Select the base map.</p>
+		</BaseMap>
+		<Opacity>
+			<h>Base Map Opacity</h>
+			<p>Enter the base map opacity. Enter 100% for an opaque base map, and decrease the value to make the base map fade out.</p>
+		</Opacity>
+		<Projection>
+			<h>Map projection</h>
+			<p>Select an appropriate map projection for the spatial extent of your data. Uploaded data must have a geographic projection with latitude and longitude coordinates in WGS84 datum. Once the map projection is selected the spatial units and flow coordinates will be transformed into the selected coordinate system.</p>
+		</Projection>
+		<AddTitle>
+			<h>Add title</h>
+			<p>Enter title text in the box below that will appear when the checkbox is checked. Title will be displayed on top and can be moved in any location in the layout.</p>
+		</AddTitle>
+		<Reference>
+			<h>Upload custom reference labels</h>
+			<p>Upload a point geojson file for labeling desired locations. You may convert a point shape file into a geojson file using mapshaper.org or QGIS.</p>
+		</Reference>
+		<ReferenceField>
+			<h>Label field</h>
+			<p>Select the appropriate field to label reference locations.</p>
+		</ReferenceField>
+		<LabelFontSize>
+			<h>Font size</h>
+			<p>Select the font size for labels.</p>
+		</LabelFontSize>
+		<LabelRadius>
+			<h>Label radius</h>
+			<p>Adjust the radius for creating a circle symbol for labeling locations.</p>
+		</LabelRadius>
+		<LabelColor>
+			<h>Label color</h>
+			<p>Enter text color for reference labels.</p>
+		</LabelColor>
+		<LabelOpacity>
+			<h>Label opacity</h>
+			<p>Enter an opacity value for labels. Values below 100 will make labels transparent.</p>
+		</LabelOpacity>
+	</baseMapTab>
+	<regions>
+		<UploadPolygonData>
+			<h>Upload a JSON polygon data</h>
+			<p>Upload a JSON file that includes polygon features to create a choropleth map. JSON file should include an ID field (attribute) for joining with an attribute CSV file and generating a node file using the centroids of regions. </p>
+		</UploadPolygonData>
+		<JoinCSVData>
+			<h>Upload a region CSV attribute file</h>
+			<p>Upload a CSV file to join with the JSON region shapes and create a choropleth region map.</p>
+		</JoinCSVData>
+		<HideNullValues>
+			<h>Hide null values</h>
+			<p>When checked this parameter hides the region polygons that do not match with the records in the attribute CSV file.</p>
+		</HideNullValues>
+		<JoinIDField>
+			<h>JSON ID field</h>
+			<p>Select ID field in JSON file that will join to matching ID field in CSV file.</p>
+		</JoinIDField>
+		<CSVIDField>
+			<h>CSV ID field</h>
+			<p>Select ID field in CSV file that will join to matching ID field in JSON file.</p>
+		</CSVIDField>
+		<MapField>
+			<h>Map attribute field</h>
+			<p>Select the thematic attribute field to create a regions choropleth map. Make sure that the attribute is normalized or standardized and does not include raw count data.</p>
+		</MapField>
+		<Classification>
+			<h>Classification method</h>
+			<p>Select the classification method to be applied to the selected region attribute.</p>
+		</Classification>
+		<NumberOfClasses>
+			<h>Number of classes</h>
+			<p>Enter the number of classes for the selected classification.</p>
+		</NumberOfClasses>
+		<ManualBreak>
+			<h>Rules for manual breaks:</h>
+			<p>Enter desired break values as a sequence of numbers separated by a space. For example, "30 40 50" creates 4 classes with breaks at 30, 40, and 50. Minimum of 3 breaks is required and the maximum number is 8.</p>
+		</ManualBreak>
+		<ColorScheme>
+			<h>Polygon fill color scheme</h>
+			<p>Select a color scheme for symbolizing region polygons.</p>
+		</ColorScheme>
+		<FillOpacity>
+			<h>Fill opacity</h>
+			<p>Enter the opacity (transparency) for polygon fill color. While 100% makes polygons opaque, 50% is half transparent.</p>
+		</FillOpacity>
+		<CustomColorMin>
+			<h>Minimum fill color for polygons</h>
+			<p>Select or enter the color value to be assigned to the minimum attribute value for polygons. Color values between the minimum and maximum attribute values will be interpolated.</p>
+		</CustomColorMin>
+		<CustomColorMax>
+			<h>Maximum fill color for polygons</h>
+			<p>Select or enter the color value to be assigned to the maximum attribute value for polygons. Color values between the minimum and maximum attribute values will be interpolated.</p>
+		</CustomColorMax>
+		<StrokeColor>
+			<h>Flow stroke color</h>
+			<p>Enter the stroke color to symbolize the outline of polygon symbols.</p>
+		</StrokeColor>
+		<StrokeWidth>
+			<h>Stroke width</h>
+			<p>Enter the stroke width of the region polygons. You may enter 0 to remove the outline for region polygons.</p>
+		</StrokeWidth>
+		<LegendTitle>
+			<h>Regions legend title</h>
+			<p>Enter a customized choropleth legend title for regions.</p>
+		</LegendTitle>
+		<DecimalPlaces>
+			<h>Decimal places</h>
+			<p>Enter the number of decimal places to be displayed for the choropleth map legend.</p>
+		</DecimalPlaces>
+	</regions>
+	
+	<nodes>
+		<NodeData>
+			<h>Upload node data</h>
+			<p>Upload a csv node data that includes at least three columns: nodeID, X (longitude), and Y (latitude). Additional columns may be included for symbolizing nodes.</p>
+		</NodeData>
+		<IDField>
+			<h>Node ID field</h>
+			<p>Node ID values in this field should match with ID values in the origin and destination ID fields of the flow data.</p>
+		</IDField>
+		<XField>
+			<h>X (longitude) field</h>
+			<p>Select the X coordinate field in the node data. The coordinates in the X coordinate field should correspond to longitude in decimal degrees in WGS84 datum.</p>
+		</XField>
+		<YField>
+			<h>Y (latitude) field</h>
+			<p>Select the Y coordinate field in the node data. The coordinates in the Y coordinate field should correspond to latitude in decimal degrees in WGS84 datum.</p>
+		</YField>
+		<MapNodeAttribute>
+			<h>Node Attribute Field</h>
+			<p>Select the node attribute field to determine the size and symbology of nodes.</p>
+		</MapNodeAttribute>
+		<Scale>
+			<h>Scaling for node (circle) sizes</h>
+			<p>Select the scaling method to determine the node sizes.</p>
+		</Scale>
+		<Classification>
+			<h>Classification method</h>
+			<p>Select the classification method to be applied to the selected node attribute.</p>
+		</Classification>
+		<NumOfClasses>
+			<h>Number of classes</h>
+			<p>Enter the number of classes for the selected classification.</p>
+		</NumOfClasses>
+		<ManualBreak>
+			<h>Rules for manual breaks:</h>
+			<p>Enter desired break values as a sequence of numbers separated by a space. For example, "30 40 50" creates 4 classes with breaks at 30, 40, and 50. Minimum of 3 breaks is required and the maximum number is 8.</p>
+		</ManualBreak>
+		<FillColor>
+			<h>Node fill color scheme</h>
+			<p>Select a color scheme for symbolizing nodes.</p>
+		</FillColor>
+		<Fill>
+			<h>Single node fill color</h>
+			<p>Select a single color to symbolize all nodes.</p>
+		</Fill>
+		<FillOpacity>
+			<h>Fill opacity</h>
+			<p>Enter the opacity (transparency) for node fill color. While 100% makes nodes opaque, 50% is half transparent.</p>
+		</FillOpacity>
+		<MinColor>
+			<h>Minimum fill color for nodes</h>
+			<p>Select or enter the color value to be assigned to the minimum node attribute value. Color of the values between minimum and maximum node colors will be interpolated.</p>
+		</MinColor>
+		<MaxColor>
+			<h>Maximum fill color for nodes</h>
+			<p>Select or enter the color value to be assigned to the maximum node attribute value. Color of the values between minimum and maximum node colors will be interpolated.</p>
+		</MaxColor>
+		<MinRadius>
+			<h>Minimum node (circle) radius</h>
+			<p>Enter the minimum radius of circles that will be assigned to the minimum value of a node attribute.</p>
+		</MinRadius>
+		<MaxRadius>
+			<h>Maximum node (circle) radius</h>
+			<p>Enter the maximum radius of circles that will be assigned to the maximum value of a node attribute.</p>
+		</MaxRadius>
+		<StrokeColor>
+			<h>Flow stroke color</h>
+			<p>Enter the stroke color to symbolize the outline of the node symbol.</p>
+		</StrokeColor>
+		<StrokeWidth>
+			<h>Stroke width</h>
+			<p>Enter the stroke width for the node symbol. You may enter 0 not to remove the outline for node symbols.</p>
+		</StrokeWidth>
+		<LegendTitle>
+			<h>Flow legend title</h>
+			<p>Enter a customized legend title for nodes.</p>
+		</LegendTitle>
+		<DecimalPlaces>
+			<h>Decimal places</h>
+			<p>Enter the number of decimal places to be displayed for the node legend.</p>
+		</DecimalPlaces>
+	</nodes>
+	
+	<flows>
+		<FlowData>
+			<h>Upload flow data</h>
+			<p>Upload a csv flow data that includes three columns: OriginID, DestinationID, Volume (Weight).</p>
+		</FlowData>
+		<OriginID>
+			<h>Origin ID field</h>
+			<p>Select the origin ID field in the flow data. Values in origin ID field should exist in the node data (csv file) to be displayed.</p>
+		</OriginID>
+		<DestinationID>
+			<h>Destination ID field</h>
+			<p>Select the destination ID field in the flow data. Values in destination ID field should exist in the node data (csv file) to be displayed.</p>
+		</DestinationID>
+		<Volume>
+			<h>Volume (Weight) field</h>
+			<p>Select the flow attribute to be displayed as the flow volume or weight. You may use raw flow volume or a normalized flow measure such as flow efficiency and modularity.</p>
+		</Volume>
+		<ShowTopFLows>
+			<h>Show top flows</h>
+			<p>You may enter the maximum number of flows to be displayed. For example, you may enter 150 to display the top 150 flows. Maximum number of flows supported by FlowMapper is 1,000.</p>
+		</ShowTopFLows>
+		<Style>
+			<h>Flow line style</h>
+			<p>Select the flow line symbology. For further information on flow line styles, please refer to Koylu, C., Tian, G. and Windsor, M. (2021) FlowMapper.org: Web-based and interactive framework for designing origin-destination flow maps.</p>
+		</Style>
+		<Classification>
+			<h>Classification method</h>
+			<p>Select the method for classifying the flow weight.</p>
+		</Classification>
+		<NumOfClasses>
+			<h>Number of classes</h>
+			<p>Enter the number of classes for the selected classification.</p>
+		</NumOfClasses>
+		<ManualBreak>
+			<h>Rules for manual breaks:</h>
+			<p>Enter desired break values as a sequence of numbers separated by a space. For example, "30 40 50" creates 4 classes with breaks at 30, 40, and 50. Minimum of 3 breaks is required and the maximum number is 8.</p>
+		</ManualBreak>
+		<Color>
+			<h>Flow color scheme</h>
+			<p>Select the color scheme for symbolizing flows.</p>
+		</Color>
+		<FillOpacity>
+			<h>Fill opacity</h>
+			<p>Enter the opacity (transparency) for flow filling color. While 100% makes flows opaque, 50% is half transparent.</p>
+		</FillOpacity>
+		<MinColor>
+			<h>Minimum flow color</h>
+			<p>Select or enter the color value to determine the minimum flow value. Color of the values between minimum and maximum flow colors will be interpolated.</p>
+		</MinColor>
+		<MaxColor>
+			<h>Maximum flow color</h>
+			<p>Select or enter the color value to determine the maximum flow value. Color of the values between minimum and maximum flow colors will be interpolated.</p>
+		</MaxColor>
+		<MinWidth>
+			<h>Minimum flow width</h>
+			<p>Enter the minimum flow width that will be assigned to display the minimum flow weight.</p>
+		</MinWidth>
+		<MaxWidth>
+			<h>Maximum flow width</h>
+			<p>Enter the maximum flow width that will be assigned to display the maximum flow weight.</p>
+		</MaxWidth>
+		<StrokeColor>
+			<h>Flow stroke color</h>
+			<p>Select the outline color for flow symbols.</p>
+		</StrokeColor>
+		<StrokeWidth>
+			<h>Stroke width</h>
+			<p>Enter the stroke width for flow symbols. You may enter 0 to remove the outline for flow symbols.</p>
+		</StrokeWidth>
+		<LegendTitle>
+			<h>Flow legend title</h>
+			<p>Enter a customized legend title for flows.</p>
+		</LegendTitle>
+		<DecimalPlaces>
+			<h>Decimal places</h>
+			<p>Enter the number of decimal places to be displayed in the flow legend.</p>
+		</DecimalPlaces>
+	</flows>
+</help>

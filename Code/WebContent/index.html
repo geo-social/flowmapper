@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>FlowMapper</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<!--     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu"> -->
+    <link rel="stylesheet" href="assets/css/ol.css"> 
+    <link rel="stylesheet" href="assets/css/colorbrewer.css">
+    <link rel="stylesheet" href="assets/css/FlowmapTest.css">
+    <link rel="stylesheet" href="assets/css/MoveFromPage.compiled.css">
+    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="assets/css/Navigation-Menu.css">
+    <link rel="stylesheet" href="assets/css/Navigation-Dark-Clean.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-dark navbar-expand-md bg-dark navigation-clean" style="height: 47px;display: flex;">
+            <div class="container" style="margin: 0; width:37%;"><a class="navbar-brand" href="#">Flow Mapper</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ml-auto">
+				    <li class="nav-item dropdown" id="File-Dropdown"><a aria-expanded="false" class="nav-link" >File</a>
+				        <div class="dropdown-menu inline-popups" style="text-align: center; min-width:8.5rem;" id ="File-Menu">
+				        	<div class="btn-group dropright dropdown-item" style="width: 100%;">
+				            	<a type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" style="background-color: transparent; border: 0px; width: 100%; padding: 0;">Project</a>
+				                <ul class="dropdown-menu secondary-dropdown-menu" style="background-color: black;">
+				                    <li style="text-align: center;"><button class="btn btn-primary btn-thirdSize" id="LoadProject-Btn" type="button" style="background-color: transparent;border: 0;">Load Project</button></li>
+				                    <li style="text-align: center;"><button class="btn btn-primary btn-thirdSize" id="SaveProject-Btn" type="button" style="background-color: transparent;border: 0;">Save Project</button></li>
+				                </ul>
+				            </div>
+				            <div class="btn-group dropright dropdown-item" style="width: 100%;">
+				            	<a type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" style="background-color: transparent; border: 0px; width: 100%; padding: 0;">Export</a>
+				                <ul class="dropdown-menu secondary-dropdown-menu" style="background-color: black;">
+				                    <li style="text-align: center;"><button class="btn btn-primary btn-thirdSize" id="ExportSVG-Btn" type="button" style="background-color: transparent;border: 0px;">SVG</button></li>
+				                    <li style="text-align: center;"><button class="btn btn-primary btn-thirdSize" id="ExportPNG-Btn" type="button" style="background-color: transparent;border: 0;">PNG</button></li>
+				                    <li style="text-align: center;"><button class="btn btn-primary btn-thirdSize" id="ExportJPG-Btn" type="button" style="background-color: transparent;border: 0;">JPG</button></li>
+				                	<li style="text-align: center;"><button class="btn btn-primary btn-thirdSize" id="ExportTIF-Btn" type="button" style="background-color: transparent;border: 0;">TIF</button></li>
+				                </ul>
+				            </div>
+				        </div>
+				    </li>
+				    <li class="nav-item dropdown" id="View-Dropdown"><a aria-expanded="false" class="nav-link" >View</a>
+				        <div class="dropdown-menu inline-popups" style="text-align: center; min-width:8.5rem;" id ="View-Menu">
+				        	<div class="btn-group dropright dropdown-item" style="width: 100%;">
+				            	<a type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" style="background-color: transparent; border: 0px; width: 100%; padding: 0;">Drawing order</a>
+				                <ul class="dropdown-menu secondary-dropdown-menu" style="background-color: black;">
+				                    <li style="text-align: center;"><button class="btn btn-primary btn-thirdSize" id="FlowsOnTop-Btn" type="button" style="background-color: transparent;border: 0;">Flows On Top</button></li>
+				                    <li style="text-align: center;"><button class="btn btn-primary btn-thirdSize" id="NodesOnTop-Btn" type="button" style="background-color: transparent;border: 0;">Nodes On Top</button></li>
+				                </ul>
+				            </div>
+				        </div>
+				    </li>
+				    <li class="nav-item dropdown" id="Tools-Dropdown"><a aria-expanded="false" class="nav-link" href="#" data-toggle="dropdown" >Tools</a>
+				        <div class="dropdown-menu inline-popups" style="text-align: center;" id ="Tools-Menu">
+				        	<a class="dropdown-item text-center btn-secondary" href="#PolygonsToPoints-Block" data-effect="mfp-zoom-in">Polygons to Points</a>
+				        	<a class="dropdown-item text-center btn-secondary" href="#NormalizeFlows-Block" data-effect="mfp-zoom-in">Normalize Flows</a>
+				        	<!-- <a class="dropdown-item text-center btn-secondary" href="#TestServerConnection-Block" data-effect="mfp-zoom-in">Test Server Connection</a> -->
+				        </div>
+				    </li>
+				    <li class="nav-item dropdown" id="Help-Dropdown"><a aria-expanded="false" class="nav-link" href="#" data-toggle="dropdown" >Help</a>
+				        <div class="dropdown-menu inline-popups" style="text-align: center;" id ="Tools-Menu">
+				        	<a id="VideoTutorial-A" class="dropdown-item text-center btn-secondary" href="#VideoTutorial-Block" data-effect="mfp-zoom-in">Video Tutorial</a>
+				        	<a class="dropdown-item text-center btn-secondary" href="#TutorialData-Block" data-effect="mfp-zoom-in">Tutorial Data</a>
+				        </div>
+				    </li>
+				   <!--  <li class="nav-item inline-popups">
+				    	<a aria-expanded="false" class="nav-link" href="#ProjectHelp-Block" data-effect="mfp-zoom-in" >Help</a>
+				    </li> -->
+				    <li class="nav-item inline-popups">
+				    	<a aria-expanded="false" class="nav-link" href="#Contact-Block" data-effect="mfp-zoom-in" >Contact</a>
+				    </li>
+				    <li class="nav-item inline-popups">
+				    	<a aria-expanded="false" class="nav-link" href="#About-Block" data-effect="mfp-zoom-in" >About</a>
+				    </li>
+				</ul>
+				</div>
+			</div>
+			<a id="GeosocialLogo-A" target="_blank" rel="noopener noreferrer" href="https://www.geo-social.com/" ><img id="GeosocialLogo-Img" src="assets/img/geosocialLogo.png" alt="Geosocial Lab"></a> 
+		</nav>
+        <div id="map"></div>
+        <div id="Legend"></div>
+        <div id="UserOverlay"></div>
+        <div id="SpatialAnalysis-Block" class="white-popup mfp-with-anim mfp-hide"><button class="btn btn-primary mfp-close" type="button">X</button>
+            <div class="table-responsive" style="width: 50%;font-weight: normal;font-family: Ubuntu, sans-serif;">
+                <table class="table">
+                    <thead style="font-family: Roboto, sans-serif;">
+                        <tr></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight: normal;font-family: Ubuntu, sans-serif;">Input your CSV flow file for analysis:<br></td>
+                            <td><input type="file" id="SpatialAnalysis_File-Input" class="File-Input" accept=".csv,.json"></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: normal;font-family: Ubuntu, sans-serif;">Result for your analysis:<br></td>
+                            <td style="font-weight: normal;font-family: Ubuntu, sans-serif;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="PolygonsToPoints-Block" class="info-blocks white-popup mfp-with-anim mfp-hide InfoBoxes" style="width: 67%;text-align: center;"><button class="btn btn-primary mfp-close" type="button">X</button>
+            <h1 class="text-left">Polygons To Points</h1>
+            <p class="text-left"> This tool will help you convert your polygon data in geoJSON or topoJSON to CSV file of polygon centroids.<br></p>
+            <p class="text-left"> Please input your JSON below:<br></p>
+            <input type="file" id="PolygonsToPoints-Input" accept=".json" >
+        </div>
+        
+        <div id="NormalizeFlows-Block" class="info-blocks white-popup mfp-with-anim mfp-hide InfoBoxes" style="width: 67%;text-align: center;"><button class="btn btn-primary mfp-close" type="button">X</button>
+            <h1 class="text-left" style="height: 27px;">Normalize Flows</h1>
+            <p class="text-left"> Flow normalization helps remove the effect of total flow or population size by calculating the difference between the actual flow and the expected volume of flow for each pair of locations (nodes). We use an adjusted flow volume formula to calculate the expected number of flows between locations.<br></p>
+            <p class="text-left"> For more details in modularity function please refer to <a target="_blank" rel="noopener noreferrer" href="https://ieeexplore.ieee.org/abstract/document/5290710">Guo (2009)</a>.<br></p>
+            <p class="text-center"> <img id="NormalizeFlows-Img" src="assets/img/normalizeflows.png" alt="normalize flows" style="width: 40%; "> </p>
+            <p class="text-left"> 1. Please choose your flow file that contains three columns: origin, destination, and volume. Then click on Submit button.<br></p>
+            <p class="text-left"> 2. Your flow file will be processed and returned back to you to download. The output file will include origin, destination, modularity, rawvolume and expectation columns. modularity column is the difference between observed flow (rawvolume) and expected flow (expectation) calculated based on the give formula.<br></p>
+            <p class="text-left"> 3. Modularity values could be negative or positive. Negative values mean there are less observed flows, whereas positive values mean there are more observed flows than expected from an origin to a destination.<br></p>
+            <p class="text-center"><input type="file" id="NormalizeFlows-Input" class="text-center" accept=".csv,json">
+            <button id="NormalizeFlows-Btn" class="btn btn-primary">Submit</button>
+            </p>
+        </div>
+        
+        <div id="TestServerConnection-Block" class="info-blocks white-popup mfp-with-anim mfp-hide InfoBoxes" style="width: 67%;text-align: center;"><button class="btn btn-primary mfp-close" type="button">X</button>
+            <h1 class="text-left" style="height: 27px;">Test Server Connection (beta)</h1>
+            <p class="text-left"> This is a testing tool to connect to the backend Java code, which will provide more complicated analysis tools for pre-processing your data before visualization.<br></p>
+            <p class="text-left"> Only for testing use! please input your file below:<br></p>
+            <button id="TestServerConnection-Btn" class="btn btn-primary">Test</button>
+            <p class="text-left"> Testing result:<br></p>
+        </div>
+        <div id="Instructions-Block" class="info-blocks white-popup mfp-with-anim mfp-hide InfoBoxes" style="width: 42%;">
+            <h1 id="Instructions-H"></h1>
+            <p id="Instructions-P" class="text-left" style="margin-bottom: 0;"></p>
+        </div>
+        <div id="VideoTutorial-Block" class="info-blocks white-popup mfp-with-anim mfp-hide InfoBoxes" style="width: 67%; height: 70vh;"><button class="btn btn-primary mfp-close" type="button">X</button>
+            <h1 class="text-left">Video Tutorial</h1>
+            <iframe width=100% height=90% src="https://www.youtube.com/embed/PtiDzT2Mjpo" allow="fullscreen;"> </iframe> 
+        </div>
+        <div id="TutorialData-Block" class="info-blocks white-popup mfp-with-anim mfp-hide InfoBoxes" style="width: 45%;"><button class="btn btn-primary mfp-close" type="button">X</button>
+            <h1 class="text-left">Tutorial Data</h1>
+            <p class="text-left">Example data sets are available to download and visualize with FlowMapper in the following link: <a target="_blank" rel="noopener noreferrer" href="https://github.com/geo-social/flowmapper">https://github.com/geo-social/flowmapper</a>.</p> 
+        </div>
+        <div id="Contact-Block" class="white-popup mfp-with-anim mfp-hide info-blocks InfoBoxes" style="width: 62%;">
+        	<button class="btn btn-primary mfp-close" type="button">X</button>
+        	<h1>Contact Email</h1>
+        	<table>
+        		<tr>
+        			<!-- <td>
+        				<form id="Email-form" action="mailto:geo-social@uiowa.edu" method="post">
+							<label>Name:<br></label>
+							<input type="text" name="name" style="height: 30px; font-size: 0.9em;"><br>
+							<label>E-mail:<br></label>
+							<input type="text" name="mail" style="height: 30px;  font-size: 0.9em;"><br>
+							<label>Message:<br></label>
+							<textarea type="text" name="comment" size="50" style="height: 30vh; width: 100%; font-size: 0.9em;"></textarea><br><br>
+							<input class="btn btn-primary" type="submit" value="Send" >
+						</form>
+        			</td>
+        			<td style="vertical-align: text-top;">
+        				<table>
+							<tr>
+								<td>
+									Email: geo-social@uiowa.edu
+								<td>
+							</tr>
+							<tr class="BlankRow">
+	                            <td >&nbsp;</td>
+	                        </tr>
+	                        
+	                        <tr>
+								<td>
+									Please contact us for any help using FlowMapper. Here are some example feedback:
+								<td>
+							</tr>
+							<tr class="BlankRow">
+	                            <td >&nbsp;</td>
+	                        </tr>
+							<tr>
+								<td style="list-style:disc inside none;display:list-item;">
+									Tell us about any bugs or problems you experienced with the interface and interactions.
+								<td>
+							</tr>
+							<tr class="BlankRow">
+	                            <td >&nbsp;</td>
+	                        </tr>
+							<tr>
+								<td style="list-style:disc inside none;display:list-item;">
+									Suggest new additions to FlowMapper. For example, if you would like us to enable any map projection that is not available, we are happy to include your suggested projection.
+								<td>
+							</tr>
+							
+							<tr>
+								<td>
+									We are happy to hear any feedback and looking forward to improving your experience with FlowMapper.
+								<td>
+							</tr>
+	                        <tr class="BlankRow">
+	                            <td >&nbsp;</td>
+	                        </tr>
+							<tr>
+								<td>
+									Tutorial Data: <a target="_blank" rel="noopener noreferrer" href="https://github.com/geo-social/flowmapper">github.com/geo-social/flowmapper</a>
+								<td>
+							</tr>
+							
+							<tr class="BlankRow">
+	                            <td >&nbsp;</td>
+	                        </tr>
+							
+							<tr>
+								<td>
+									Website: <a target="_blank" rel="noopener noreferrer" href="https://www.geo-social.com/" href="">www.geo-social.com</a>
+								<td>
+							</tr> -->
+							
+							<p class="text-left">Email: geo-social@uiowa.edu</p>
+							<p class="text-left">Please contact us for any help using FlowMapper. Here are some example feedback:</p>
+							<p class="text-left" style="list-style:disc inside none;display:list-item;">Tell us about any bugs or problems you experienced with the interface and interactions.</p>
+							<p class="text-left" style="list-style:disc inside none;display:list-item;">Suggest new additions to FlowMapper. For example, if you would like us to enable any map projection that is not available, we are happy to include your suggested projection.</p>
+							<p class="text-left">We are happy to hear any feedback and looking forward to improving your experience with FlowMapper.</p>
+							<p class="text-left">Tutorial Data: <a target="_blank" rel="noopener noreferrer" href="https://github.com/geo-social/flowmapper">github.com/geo-social/flowmapper</a></p>
+							<p class="text-left">Website: <a target="_blank" rel="noopener noreferrer" href="https://www.geo-social.com/">www.geo-social.com</a></p>
+						</table>
+        			</td>
+        		</tr>
+        	</table>
+        </div>
+        <div id="About-Block" class="info-blocks white-popup mfp-with-anim mfp-hide InfoBoxes" style="width: 45%;"><button class="btn btn-primary mfp-close" type="button">X</button>
+            <h1 class="text-left">About FlowMapper</h1>
+            <p class="text-left"><span style="font-weight:bold;">Version: </span>1.0.5</p>
+            <p class="text-left"><span style="font-weight:bold;">Developer: </span>Geng Tian</p>
+            <p class="text-left"><span style="font-weight:bold;">Supervisor: </span>Caglar Koylu</p>
+            <p class="text-left"><span style="font-weight:bold;">Citation: </span>Please cite the reference below if you use FlowMapper in a manuscript:</p>
+            <p class="text-left">Koylu, C., Tian, G., & Windsor, M.  (2021) FlowMapper.org: Web-based and interactive framework for designing origin-destination flow maps</p>
+        </div>
+        <div id="AttributeBox-Block"></div><a id="MapDownload-A" href="#" download="map.png" style="display: none;">Link</a><a id="SVGDownload-A" href="#" download="map.png" style="display: none;">Link</a>
+    	<div id="previewImage"></div>
+    	<div id="SideBar-Div">
+		  <!-- Nav tabs -->
+		  <ul class="nav nav-tabs" >
+		    <li class="nav-item Tabs">
+		      <a id="BaseMap-A" class="nav-link Tabs-A active" data-toggle="tab" href="#BaseMap-Tab" >Base Map</a>
+		    </li>
+		    <li class="nav-item Tabs">
+		      <a id="Regions-A" class="nav-link Tabs-A" data-toggle="tab" href="#Regions-Tab">Regions</a>
+		    </li>
+		    <li class="nav-item Tabs">
+		      <a id="Nodes-A" class="nav-link Tabs-A" data-toggle="tab" href="#Nodes-Tab">Nodes</a>
+		    </li>
+		    <li class="nav-item Tabs">
+		      <a id="Flows-A" class="nav-link Tabs-A" data-toggle="tab" href="#Flows-Tab">Flows</a>
+		    </li>
+		  </ul>
+		  <!-- Tab panes -->
+		  <div class="tab-content" style="text-align: center;">
+		    <div id="BaseMap-Tab" class="container tab-pane active TabListItems" style="text-align: center;">
+				<table class="table">
+                    <thead>
+                     	<tr>
+                            <td style="width: 115px;"></td>
+                            <td></td>
+                        </tr>
+						<tr>
+							<td colspan="2">Base Map: <button id="BaseMap_BaseMapInstruction-Btn" class="btn btn-primary Help-Btn BaseMap BaseMapSelection">?</button></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<select id="Online_BaseMap-Select">
+									<option value="esriLightGray" selected="">Esri Light Gray Canvas</option>
+									<option value="esriDarkGray">Esri Dark Gray Canvas</option>
+									<option value="stamenLite">Stamen Toner Lite Map</option>
+									<option value="osm">OpenStreetMap</option>
+									<option value="esriWorldImaginary">Esri World Imagery</option>
+									<option value="esriWorldPhysical">Esri World Physical Map</option>
+									<option value="esriTerrain">Esri Terrain</option>
+									<option value="esriTopographic">Esri Topographic</option>
+							 	</select>
+						 	</td>
+						</tr>
+						
+						<tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+							<td colspan="2">
+								<div class="form-check" id="DisplayMapReferences-Div">
+								 		<input class="form-check-input" type="checkbox" id="DisplayMapReference-CB">
+								 		<label class="form-check-label" for="formCheck-1">Display base map references</label>
+							 	</div>
+						 	</td>
+						</tr>
+						
+						<tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        
+						<tr>
+							<td colspan="2">Base map opacity(%): <button id="CPM_OpacityInstruction-Btn" class="btn btn-primary Help-Btn BaseMap Opacity">?</button>
+								<input type="number" id="CPM_BaseMapOpacity-Input" class="SmallerBoxes" value="100" min="0" max="100">
+						 	</td>
+						</tr>
+						
+						<tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+						<tr>
+							<td colspan="2">Projection: <button id="CPM_ProjectionInstruction-Btn" class="btn btn-primary Help-Btn BaseMap Projection">?</button></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<select id="MapProjection-Select">
+			                   		<option value="abEqAreaUS" selected="">Albers Equal Area U.S.</option>
+			                   		<option value="abEqAreaAfc">Albers Equal Area Africa</option>
+			                   		<option value="abEqAreaAs">Albers Equal Area Australia</option>
+			                   		<option value="abEqAreaCn">Albers Equal Area China</option>
+			                   		<option value="abEqAreaEu">Albers Equal Area Europe</option>
+			                   		<option value="abEqAreaSthAm">Albers Equal Area South America</option>
+			                   		<option value="robin" >Robinson</option>
+			                   		<option value="gall" >Gall Peters</option>
+			                   		<!--  <option value="eqEarth" >Equal Earth</option> -->
+			                   		<option value="webMct" >Web Mercator</option>
+		                      	</select>
+	                      	</td>
+						</tr>
+						
+						<tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+						
+						<tr>
+							<td colspan="2">
+								<div class="form-check" id="AddTitle-Div">
+								 		<input class="form-check-input" type="checkbox" id="AddTitle-CB">
+								 		<label class="form-check-label" for="formCheck-1">Add title&nbsp;</label>
+								 		<button id="CPM_AddTitleInstruction-Btn" class="btn btn-primary Help-Btn BaseMap MapTitle">?</button>
+							 	</div>
+						 	</td>
+						</tr>
+						
+						<tr class="MapTitle-Row">
+							<td colspan="2">
+								<input type="text" id="MapTitle-Input" class="" value="Map Title">
+						 	</td>
+						</tr>
+						
+						
+						<tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+						
+						<tr>
+							<td colspan="2">
+								<div class="form-check" id="AddNorthArrow-Div">
+								 		<input class="form-check-input" type="checkbox" id="AddNorthArrow-CB">
+								 		<label class="form-check-label" for="formCheck-1">Add north arrow</label>
+							 	</div>
+						 	</td>
+						</tr>
+						
+						<tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+						
+						<tr>
+							<td colspan="2">
+								<div class="form-check" id="AddProjectionLabel-Div">
+								 		<input class="form-check-input" type="checkbox" id="AddProjectionLabel-CB">
+								 		<label class="form-check-label" for="formCheck-1">Add projection label</label>
+							 	</div>
+						 	</td>
+						</tr>
+						
+						<tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+						
+						<tr>
+							<td colspan="2">
+								<div class="form-check" id="UploadReference-Div">
+								 		<input class="form-check-input" type="checkbox" id="UploadReference-CB">
+								 		<label class="form-check-label" for="formCheck-1">Upload custom references <button id="BaseMap_ReferenceInstruction-Btn" class="btn btn-primary Help-Btn BaseMap Reference">?</button></label>
+							 	</div>
+						 	</td>
+						</tr>
+						
+						<tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+						
+                        <tr  class="UploadReference-Rows">
+                            <td colspan="2"><input type="file" id="BaseMap_Reference-Input" class="File-Input" accept=".json"></td>
+                        </tr>
+                        
+                        <tr class="BlankRow UploadReference-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="BaseMap_Reference-Rows"><td colspan="2">Reference Field: <button id="BaseMap_ReferenceFieldInstruction-Btn" class="btn btn-primary Help-Btn BaseMap Reference">?</button></td></tr>
+                        <tr class="BaseMap_Reference-Rows"><td colspan="2">
+                        	<select id="BaseMap_Reference-Select" class="FieldSelect RefFields">
+                                    <option value="14">Field Name</option>
+                            </select>
+                        </td></tr>
+                        
+                        <tr class="BlankRow BaseMap_Reference-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="BaseMap_Reference-Rows">
+                        <td>Font size: <button id="BaseMap_LabelFontSizeInstruction-Btn" class="btn btn-primary Help-Btn BaseMap Reference">?</button></td>
+                        <td>
+                        	<input type="number" id="BaseMap_LabelFontSize-Input" class="SmallerBoxes RefFields" value="10">
+                        </td>
+                        </tr>
+                        
+                        <tr class="BlankRow BaseMap_Reference-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="BaseMap_Reference-Rows">
+                        <td>Label radius: <button id="BaseMap_LabelRadiusInstruction-Btn" class="btn btn-primary Help-Btn BaseMap Reference">?</button></td>
+                        <td>
+                        	<input type="number" id="BaseMap_LabelRadius-Input" class="SmallerBoxes RefFields" value="1">
+                        </td>
+                        </tr>
+                        
+                        <tr class="BlankRow BaseMap_Reference-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="BaseMap_Reference-Rows">
+                        <td>Label color: <button id="BaseMap_LabelColorInstruction-Btn" class="btn btn-primary Help-Btn BaseMap Reference">?</button></td>
+                        <td>
+                        	<input type="color" id="BaseMap_LabelColor-Input" class="SmallerBoxes RefFields" value="#7D7D7D">
+                        </td>
+                        </tr>
+                        
+                        <tr class="BlankRow BaseMap_Reference-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="BaseMap_Reference-Rows">
+                        <td>Opacity (%): <button id="BaseMap_LabelOpacityInstruction-Btn" class="btn btn-primary Help-Btn BaseMap Reference">?</button></td>
+                        <td>
+                        	<input type="number" id="BaseMap_LabelOpacity-Input" class="SmallerBoxes RefFields" value="80" min="0" max="100">
+                        </td>
+                        </tr>
+                        
+                        <tr class="BlankRow BaseMap_Reference-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="BaseMap_Reference-Rows">
+                        <td colspan="2">
+                        	<div class="form-check">
+						 		<input class="form-check-input" type="checkbox" id="BaseMap_LebelTop-CB">
+						 		<label class="form-check-label" for="formCheck-1">Display labels on top</label>
+							 </div>
+                        </td>
+                        </tr>
+                        
+                        <tr class="BlankRow BaseMap_Reference-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+					</thead>
+				</table>
+		    </div>
+		    <div id="Regions-Tab" class="container tab-pane fade TabListItems">
+				<table class="table">
+                    <thead>
+                    	<tr>
+                            <td style="width: 115px;"></td>
+                            <td></td>
+                        </tr>
+                    	<tr>
+                            <td colspan="2">Upload Polygon Data: <button id="CPM_UploadPolygonDataInstruction-Btn" class="btn btn-primary Help-Btn Regions UploadPolygonData">?</button></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="file" id="BaseMap_File-Input" class="File-Input" accept=".json"></td>
+                        </tr>
+                        
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="2" >Join CSV Data: <button id="CPM_JoinCSVDataInstruction-Btn" class="btn btn-primary Help-Btn Regions JoinCSVData">?</button></th>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="file" id="CPM_CSV-Input" class="File-Input" accept=".csv"><br></td>
+                        </tr>
+                        
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr><td colspan="2">
+                        	<div class="form-check" style="left: 0px;position: relative;">
+	                            <input class="form-check-input" type="checkbox" id="CPM_HideNull-CB">
+	                            <label class="form-check-label" for="formCheck-1" style="left: 0px;">Hide null values</label>
+	                            <button id="CPM_HideNullValuesInstruction-Btn" class="btn btn-primary Help-Btn Regions HideNullValues" style="margin-left: 5px;">?</button>
+                            </div>
+                        </td></tr>
+                        
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                    </thead>
+                    <tbody>
+                        <tr class="CPM_CSV-Row"><td colspan="2">JSON ID Field: <button id="CPM_JoinIDFieldInstruction-Btn" class="btn btn-primary Help-Btn Regions JoinIDField">?</button></td></tr>
+                        <tr class="CPM_CSV-Row"><td colspan="2">
+                        	<select id="CPM_BMPK-Select" class="FieldSelect CSVFieldSelectOfCPM">
+                                    <option value="14">Field Name</option>
+                               </select>
+                        </td></tr>
+                        
+                        <tr class="BlankRow CPM_CSV-Row">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="CPM_CSV-Row"><td colspan="2">CSV ID Field: <button id="CPM_CSVIDFieldInstruction-Btn" class="btn btn-primary Help-Btn Regions CSVIDField">?</button></td></tr>
+                        <tr class="CPM_CSV-Row"><td colspan="2">
+                        	<select id="CPM_CSVPK-Select" class="FieldSelect CSVFieldSelectOfCPM">
+                                    <option value="14">Field Name</option>
+                               </select>
+                        </td></tr>
+                        
+                        <tr class="BlankRow CPM_CSV-Row">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="CPM_CSV-Row"><td colspan="2">Map Field: <button id="CPM_MapFieldInstruction-Btn" class="btn btn-primary Help-Btn Regions MapField">?</button></td></tr>
+                        <tr class="CPM_CSV-Row"><td colspan="2">
+                        	<select id="CPM_Value-Select" class="FieldSelect CSVFieldSelectOfCPM">
+                                    <option value="14">Field Name</option>
+                               </select>
+                        </td></tr>
+                        
+                        <tr class="BlankRow CPM_CSV-Row">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                        	<td>Classification: <button id="CPM_ClassificationInstruction-Btn" class="btn btn-primary Help-Btn Regions Classification">?</button></td>
+                        	<td>
+	                        	<select id="CPM_Classification-Select" class="CPM_StyleSettings" >
+		                            <option value="Quantile" selected>Quantiles</option>
+		                            <option value="EqualInterval">Equal Intervals</option>
+		                            <option value="NaturalBreak">Natural Breaks</option>
+		                            <option value="Linear">Linear Scale</option>
+		                            <option value="ManualBreak">Manual Breaks</option>
+	                            </select>
+                        	</td>
+                        </tr>
+                        
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr id="CPM_ManualBreak-Row" class="CMP_MBStRows"><td colspan="2">Manual break setting:&nbsp; <button id="CPM_ManualBreakInstruction-Btn" class="btn btn-primary Help-Btn Regions ManualBreaks">?</button></td></tr>
+                        <tr class="CMP_MBStRows" style="display: none;"><td colspan="2">
+                        	<input type="text" id="CPM_ManualBreak-Input" class="CPM_StyleSettings">
+                        </td></tr>
+                        
+                        <tr class="BlankRow CMP_MBStRows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr><td colspan="2">Color scheme: <button id="CPM_ColorSchemeInstruction-Btn" class="btn btn-primary Help-Btn Regions ColorScheme">?</button></td></tr>
+                        <tr><td colspan="2">
+                        	<select id="CPM_ColorScheme-Select" class="CPM_StyleSettings ColorSchemeBox_Style">
+                        		<option value="Blues">Blues</option>
+								<option value="Greens">Greens</option>
+								<option value="Greys">Greys</option>
+								<option value="Oranges">Oranges</option>
+								<option value="Purples">Purples</option>
+								<option value="Reds">Reds</option>
+								<option value="PuBu">Purple-Blue</option>
+								<option value="RdPu">Red-Purple</option>
+								<option value="YlGn">Yellow-Green</option>
+								<option value="YlGnBu">Yellow-Green-Blue</option>
+								<option value="YlOrRd">Yellow-Orange-Red</option>
+								<option value="PiYG">Pink-Yellow-Green </option>
+								<option value="PRGn">Purple-Green</option>
+								<option value="RdBu">Red-Blue</option>
+								<option value="RdYlBu">Red-Yellow-Blue</option>
+								<option value="Custom">Custom</option>
+							</select>
+							<div class="form-check"><input class="form-check-input" type="checkbox" id="CPM_FlipLgClr-CB" style="margin-top: 2px;margin-left: -15px;"><label class="form-check-label" for="formCheck-1" style="left: 0px;">Flip<br></label></div>
+                        </td></tr>
+                        
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="CPM_CustomColor-Rows">
+                        	<td>Min color: <button id="CPM_CustomColorMinInstruction-Btn" class="btn btn-primary Help-Btn Regions MinColor">?</button></td>
+                        	<td>
+                        		<input type="color" id="CPM_MinCustomColor-Input" class="SmallerBoxes"/>
+                        	</td>
+                        </tr>
+                        
+                        <tr class="BlankRow CPM_CustomColor-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="CPM_CustomColor-Rows">
+	                        <td>Max color: <button id="CPM_CustomColorMaxInstruction-Btn" class="btn btn-primary Help-Btn Regions MaxColor">?</button></td>
+	                        <td>
+	                        	<input type="color" id="CPM_MaxCustomColor-Input" class="SmallerBoxes"/>
+	                        </td>
+                        </tr>
+                        
+                        <tr class="BlankRow CPM_CustomColor-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="CPM_ClassNum-Rows">
+	                        <td># of classes: <button id="CPM_NumberOfClassesInstruction-Btn" class="btn btn-primary Help-Btn Regions NumOfClasses">?</button></td>
+	                        <td>
+	                        	<input type="number" id="CPM_ClassNum-Input" class="CPM_StyleSettings SmallerBoxes" value="5" min="4" max="8">
+	                        </td>
+                        </tr>
+                        
+                        <tr class="BlankRow CPM_ClassNum-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+	                        <td>Fill opacity&nbsp;(%): <button id="CPM_FillOpacityInstruction-Btn" class="btn btn-primary Help-Btn Regions FillOpacity">?</button></td>
+	                        <td>
+	                        	<input type="number" id="CPM_FillOpacity-Input" class="CPM_StyleSettings SmallerBoxes" value="60" min="0" max="100">
+	                        </td>
+                        </tr>
+                        
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                        	<td>Stroke color: <button id="CPM_StrokeColorInstruction-Btn" class="btn btn-primary Help-Btn Regions StrokeColor">?</button></td>
+                        	<td>
+                        		<input type="color" id="CPM_StrokeColor-Input" class="Point_StyleSettings SmallerBoxes">
+                        	</td>
+                        </tr>
+                        
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+	                        <td>Stroke width: <button id="CPM_StrokeWidthInstruction-Btn" class="btn btn-primary Help-Btn Regions StrokeWidth">?</button></td>
+	                        <td>
+	                        	<input type="number" id="CPM_StrokeWidth-Input" class="CPM_StyleSettings SmallerBoxes" value="0.5" min="0" max="10">
+	                        </td>
+                        </tr>
+                        
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr><td colspan="2">Legend title: <button id="CPM_LegendTitleInstruction-Btn" class="btn btn-primary Help-Btn Regions LegendTitle">?</button></td></tr>
+                        <tr><td colspan="2">
+                        	<input type="text" id="CPM_LegendTitle-Input" class="CPM_StyleSettings" value="Choropleth Map Legend">
+                        </td></tr>
+                        
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+	                        <td>Decimal places: <button id="CPM_DecimalPlacesInstruction-Btn" class="btn btn-primary Help-Btn Regions DecimalPlaces">?</button></td>
+	                        <td>
+	                        	<input type="number" id="CPM_LegendDP-Input" class="CPM_StyleSettings SmallerBoxes" value="0" min="0" max="5">
+	                        </td>
+                        </tr>
+                        
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                         <tr>
+                            <td colspan="2" style="text-align: center;">
+	                            <button class="btn btn-primary" id="MakeCPM-Btn" style="font-size: 0.88em;" type="button">Map Regions</button>
+	                            <button id="CleanChoroplethMap-Btn" class="btn btn-primary" style="font-size: 0.88em;" type="button">Clean Regions</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+		    </div>
+		    <div id="Nodes-Tab" class="container tab-pane fade TabListItems">
+                <table class="table">
+                    <thead>
+                    	<tr>
+                            <td style="width: 115px;"></td>
+                            <td></td>
+                        </tr>
+                    	<tr>
+                            <td colspan="2"colspan="2">Node Data: <button id="Point_NodeDataInstruction-Btn" class="btn btn-primary Help-Btn Nodes NodeData">?</button><br></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="file" id="Point_File-Input" class="File-Input" accept=".csv"></td>
+                        </tr>
+                        
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       	<tr>
+                        	<td colspan="2">
+	                        	<label style="width:31%;">ID field: <button id="Point_IDFieldInstruction-Btn" class="btn btn-primary Help-Btn Nodes IDField">?</button></label>
+	                        	<select id="Point_ID-Select" style="width:66%;">
+	                                   <option value="14">Point ID Field</option>
+	                            </select>
+	                        </td>
+                        </tr>
+                        
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+	                        <td colspan="2"><label style="width:31%;">X field: <button id="Point_XFieldInstruction-Btn" class="btn btn-primary Help-Btn Nodes XField">?</button></label>
+	                        	<select id="Point_X-Select" style="width:66%;">
+	                                   <option value="14">X Coordinate Field</option>
+	                            </select>
+	                        </td>
+                        </tr>
+                        
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+	                        <td colspan="2">
+	                        	<label style="width:31%;">Y field: <button id="Point_YFieldInstruction-Btn" class="btn btn-primary Help-Btn Nodes YField">?</button></label>
+	                        	<select id="Point_Y-Select" style="width:66%;">
+	                                   <option value="14">Y Coordinate Field</option>
+	                            </select>
+	                        </td>
+                        </tr>
+                        
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                        	<td colspan="2">
+                        		<div class="form-check" style="padding-left:15px;">
+	                        		<input class="form-check-input" type="checkbox" id="Point_MapAttribute-CB" checked="true">
+	                        		<label class="form-check-label" for="formCheck-1">Map node attribute <button id="Point_MapNodeAttributeInstruction-Btn" class="btn btn-primary Help-Btn Nodes ManualBreaks">?</button></label>
+                        		</div>
+                            </td>
+                        </tr>
+                        
+                        <tr class="Point_Attributes-Rows"><td colspan="2">
+	                        	<select id="Point_Volume-Select">
+	                                   <option value="14">Node Attribute Field</option>
+	                                   <option value="noAttr">No Attribute</option>
+	                            </select>
+                            </td>
+                        </tr>
+                        
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="Point_Attributes-Rows">
+                        	<td colspan="2">
+                        	<label style="width: 26%; margin-bottom: 0px;">Scale: <button id="Point_ScaleInstruction-Btn" class="btn btn-primary Help-Btn Nodes Scale">?</button></label>
+                        	<select id="Point_Classification-Select" class="Point_StyleSettings" style="width: 72%">
+	                                    <option value="Proportional" selected="">Proportional</option>
+	                                    <option value="Quantile">Quantile</option>
+	                                    <option value="EqualInterval">Equal Interval</option>
+	                                    <option value="NaturalBreak">Natural Breaks</option>
+	                                    <option value="ManualBreak">Manual Breaks</option>
+	                            </select></td>
+                        </tr>
+                        
+                        <tr class="BlankRow Point_Attributes-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="Point_Attributes-Rows Point_ClassNum-Rows">
+	                        <td># of classes: <button id="Point_NumOfClassesInstruction-Btn" class="btn btn-primary Help-Btn Nodes NumOfClasses">?</button></td>
+	                        <td>
+	                        	<input type="number" id="Point_ClassNum-Input" class="StrokeWidthControl SmallerBoxes" value="5" min="4" max="8">
+	                        </td>
+                        </tr>
+                        <tr class="BlankRow Point_Attributes-Rows Point_ClassNum-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="Point_MBStRows Point_Attributes-Rows"><td colspan="2" class="inline-popups">Manual breaks setting:&nbsp;<button id="Point_ManualBreakInstruction-Btn" class="btn btn-primary Help-Btn Nodes ManualBreaks">?</button><br></td></tr>
+                        <tr id="Point_ManualBreak-Row" class="Point_MBStRows"><td colspan="2">
+                        	<input type="text" id="Point_ManualBreak-Input" class="Point_StyleSettings">
+                        </td></tr>
+                        
+                        <tr class="BlankRow Point_MBStRows Point_Attributes-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="Point_Attributes-Rows"><td colspan="2">
+		                        Fill color: <button id="Point_FillColorInstruction-Btn" class="btn btn-primary Help-Btn Nodes FillColor">?</button>
+		                        <select id="Point_ColorScheme-Select" class="Point_StyleSettings ColorSchemeBox_Style">
+			                           		<option value="Black">All Black</option>
+											<!-- <option class="Point_ProportionalColorOptions" value="Greys">Greys</option>
+											<option class="Point_ProportionalColorOptions" value="Greens">Greens</option>
+											<option class="Point_ProportionalColorOptions" value="Reds">Reds</option>
+											<option class="Point_ProportionalColorOptions" value="Blues">Blues</option>
+											<option class="Point_ProportionalColorOptions" value="Purples">Purples</option>
+											<option class="Point_ProportionalColorOptions" value="Custom">Custom</option>
+											<option class="Point_ClassifiedColorOptions"  value="YlGnBu">Yellow-Green-Blue</option>
+											<option class="Point_ClassifiedColorOptions"  value="PuBu">Purple-Blue</option>
+											<option class="Point_ClassifiedColorOptions"  value="RdPu">Red-Purple</option>
+											<option class="Point_ClassifiedColorOptions"  value="Greys">Greys</option>
+											<option class="Point_ClassifiedColorOptions"  value="Greens">Greens</option>
+											<option class="Point_ClassifiedColorOptions"  value="Reds">Reds</option>
+											<option class="Point_ClassifiedColorOptions"  value="RdBu">Red-Blue</option>
+											<option class="Point_ClassifiedColorOptions"  value="PRGn">Purple-Green</option>
+											<option class="Point_ClassifiedColorOptions"  value="PuOr">Purple-Orange</option> -->
+											<option value="Blues">Blues</option>
+											<option value="Greens">Greens</option>
+											<option value="Greys">Greys</option>
+											<option value="Oranges">Oranges</option>
+											<option value="Purples">Purples</option>
+											<option value="Reds">Reds</option>
+											<option value="PuBu">Purple-Blue</option>
+											<option value="RdPu">Red-Purple</option>
+											<option value="YlGn">Yellow-Green</option>
+											<option value="YlGnBu">Yellow-Green-Blue</option>
+											<option value="YlOrRd">Yellow-Orange-Red</option>
+											<option value="PiYG">Pink-Yellow-Green </option>
+											<option value="PRGn">Purple-Green</option>
+											<option value="RdBu">Red-Blue</option>
+											<option value="RdYlBu">Red-Yellow-Blue</option>
+											<option value="Custom">Custom</option>
+								</select>
+								<div class="form-check"><input class="form-check-input" type="checkbox" id="Point_FlipLgClr-CB" style="margin-top: 2px;margin-left: -15px;"><label class="form-check-label" for="formCheck-1" style="left: 0px;">Flip<br></label></div>
+                        </td>
+                        </tr>
+                        
+                        <tr class="BlankRow Point_Attributes-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="Point_CustomColor-Rows Point_Attributes-Rows">
+                        	<td>Min Color: <button id="Point_MinColorInstruction-Btn" class="btn btn-primary Help-Btn Nodes MinColor">?</button></td>
+                        	<td>
+                        		<input type="color" id="Point_MinCustomColor-Input" class="SmallerBoxes"/>
+                        	</td>
+                        </tr>
+                        
+                        <tr class="BlankRow Point_CustomColor-Rows Point_Attributes-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="Point_CustomColor-Rows Point_Attributes-Rows">
+	                        <td>Max Color: <button id="Point_MaxColorInstruction-Btn" class="btn btn-primary Help-Btn Nodes MaxColor">?</button></td>
+	                        <td>
+	                        	<input type="color" id="Point_MaxCustomColor-Input" class="SmallerBoxes"/>
+	                        </td>
+                        </tr>
+                        
+                        <tr class="BlankRow Point_CustomColor-Rows Point_Attributes-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="PointNoAttr">
+                        	<td>Fill: <button id="Point_FillInstruction-Btn" class="btn btn-primary Help-Btn Nodes Fill">?</button></td>
+                        	<td>
+                        		<input type="color" id="Point_FillColor_NoAttr-Input" class="Point_StyleSettings SmallerBoxes" value="#c2c2c2">
+                        	</td>
+                        </tr>
+                        
+                        <tr class="BlankRow PointNoAttr">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                        	<td>Fill opacity (%): <button id="Point_FillOpacityInstruction-Btn" class="btn btn-primary Help-Btn Nodes FillOpacity">?</button></td>
+                        	<td>
+                        		<input type="number" id="Point_FillOpacity-Input" class="Point_StyleSettings SmallerBoxes" value="100" min="0" max="100">
+                        	</td>
+                        </tr>
+                        
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="Point_Attributes-Rows">
+                        	<td>Min radius: <button id="Point_MinRadiusInstruction-Btn" class="btn btn-primary Help-Btn Nodes MinRadius">?</button></td>
+                        	<td>
+                        		<input type="number" id="Point_Radius_Min-Input" class="PointRadiusControl Point_StyleSettings SmallerBoxes" value="2" max="29" min="1">
+                        	</td>
+                        </tr>
+                        
+                        <tr class="BlankRow Point_Attributes-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="Point_Attributes-Rows">
+                        	<td>Max radius: <button id="Point_MaxRadiusInstruction-Btn" class="btn btn-primary Help-Btn Nodes MaxRadius">?</button></td>
+                        	<td>
+                        		<input type="number" id="Point_Radius_Max-Input" class="PointRadiusControl Point_StyleSettings SmallerBoxes" value="20" min="4" max="30">
+                        	</td>
+                        </tr>
+                        
+                        <tr class="BlankRow Point_Attributes-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                        	<td>Stroke color: <button id="Point_StrokeColorInstruction-Btn" class="btn btn-primary Help-Btn Nodes StrokeColor">?</button></td>
+                        	<td>
+                        		<input type="color" id="Point_StrokeColor-Input" class="Point_StyleSettings SmallerBoxes">
+                        	</td>
+                        </tr>
+                        
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                        	<td>Stroke width: <button id="Point_StrokeWidthInstruction-Btn" class="btn btn-primary Help-Btn Nodes StrokeWidth">?</button></td>
+	                        <td>
+	                        	<input type="number" id="Point_StrokeWidth-Input" class="Point_StyleSettings SmallerBoxes" value="0.5" max="5" min="0">
+	                        </td>
+                        </tr>
+                        
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="Point_Attributes-Rows">
+	                        <td>Legend title: <button id="Point_LegendTitleInstruction-Btn" class="btn btn-primary Help-Btn Nodes LegendTitle">?</button></td>
+	                        <td>
+	                        	<input type="text" id="Point_LegendTitle-Input" value="Node Legend">
+	                        </td>
+                        </tr>
+                        
+                        <tr class="BlankRow Point_Attributes-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="Point_Attributes-Rows">
+                        	<td>Decimal places: <button id="Point_DecimalPlacesInstruction-Btn" class="btn btn-primary Help-Btn Nodes DecimalPlaces">?</button></td>
+                        	<td>
+                        		<input type="number" id="Point_LegendDP-Input" class="PointRadiusControl Point_StyleSettings SmallerBoxes" value="0" min="0" max="5">
+                        	</td>
+                        </tr>
+                        
+                        <tr class="BlankRow Point_Attributes-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr style="display: none;">
+	                        <td colspan="2">
+	                        	<div class="form-check" style="margin-left: 10px;left: 0px;position: relative;"><input class="form-check-input" type="checkbox" id="Point_DisplayAsAbs-CB" ><label class="form-check-label" for="formCheck-1" style="left: 0px;">Create a change flow map<br></label></div>
+	                        </td>
+                        </tr>
+                        
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="2" style="text-align: center;">
+	                            <button class="btn btn-primary PointAndFlowMapBtns" style="font-size: 0.99em;" type="button">Map Nodes</button>
+	                            <button id="CleanPoints-Btn" class="btn btn-primary" style="font-size: 0.99em;" type="button">Clean Nodes</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+		    </div>
+		    <div id="Flows-Tab" class="container tab-pane fade TabListItems">
+		      <table class="table">
+                    <thead>
+                    	<tr>
+                            <td style="width: 115px;"></td>
+                            <td></td>
+                        </tr>
+                    	<tr>
+                            <td colspan="2">Flow Data: <button id="Flow_FlowDataInstruction-Btn" class="btn btn-primary Help-Btn Flows FlowData">?</button></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="file" id="Flow_File-Input" class="File-Input" accept=".csv"></td>
+                        </tr>
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="2">Origin ID:&nbsp;<button id="Flow_OriginIDInstruction-Btn" class="btn btn-primary Help-Btn Flows OriginID">?</button>
+	                        	<select id="Flow_SourceID-Select" style="width:calc(100% - 95px); float:right;">
+	                                    <option value="14">Origin Field</option>
+	                            </select>
+	                        </td>
+                        </tr>
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+	                        <td colspan="2">Destination ID:&nbsp;<button id="Flow_DestinationIDInstruction-Btn" class="btn btn-primary Help-Btn Flows DestinationID">?</button>
+	                        	<select id="Flow_TargetID-Select" style="width:calc(100% - 110px); float:right;">
+	                                    <option value="14">Des Field</option>
+	                            </select>
+	                        </td>
+                        </tr>
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+	                        <td colspan="2">Volume:&nbsp;<button id="Flow_VolumeInstruction-Btn" class="btn btn-primary Help-Btn Flows Volume">?</button>
+	                        	<select id="Flow_Volume-Select" style="width:calc(100% - 95px); float:right;">
+	                                    <option value="14">Volume Field</option>
+	                            </select>
+	                        </td>
+                        </tr>
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                        	<td colspan="2">Show top flows: <button id="Flow_ShowTopFLowsInstruction-Btn" class="btn btn-primary Help-Btn Flows ShowTopFLows">?</button>
+                        	 <input type="number" id="Flow_TopFlowFromAllFlows-Input" class="Flow_StyleSettings SmallerBoxes" value="100" min="1" max="1000"></td>
+                        </tr>
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                        	<td colspan="2">Style:&nbsp;<button id="Flow_StyleInstruction-Btn" class="btn btn-primary Help-Btn Flows Style">?</button>
+                        	<select id="Flow_Style-Select" style="width:73%; float:right;">
+	                                    <option value="curve" selected="">Curve Half Arrow</option>
+	                                    <option value="strtHfArw">Straight Half Arrow</option>
+	                                    <option value="tapered">Tapered</option>
+	                                    <option value="tearDrop">Tear Drop</option>
+	                        </select>
+	                        </td>
+                        </tr>
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                        	<td>Classification: <button id="Flow_ClassificationInstruction-Btn" class="btn btn-primary Help-Btn Flows Classification">?</button></td>
+                        	<td>
+	                        	<select id="Flow_Classification-Select" class="FieldSelect">
+	                                    <option value="Proportional" selected="">Proportional</option>
+	                                    <option value="Quantile">Quantiles</option>
+	                                    <option value="EqualInterval">Equal Intervals</option>
+	                                    <option value="NaturalBreak">Natural Breaks</option>
+	                                    <option value="ManualBreak">Manual Breaks</option>
+	                            </select>
+                        	</td>
+                        </tr>
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        
+                        <tr class="Flow_ClassNum-Rows">
+	                        <td># of classes: <button id="Flow_NumOfClassesInstruction-Btn" class="btn btn-primary Help-Btn Flows NumOfClasses">?</button></td>
+	                        <td>
+	                        	<input type="number" id="Flow_ClassNum-Input" class="StrokeWidthControl SmallerBoxes" value="5" min="4" max="8">
+	                        </td>
+                        </tr>
+                        <tr class="BlankRow Flow_ClassNum-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="Flow_MBStRows" style="display: none;"><td colspan="2" class="inline-popups">Manual breaks setting:&nbsp;<button id="Flow_ManualBreakInstruction-Btn"  class="btn btn-primary Help-Btn Flows ManualBreaks">?</button></td></tr>
+                        <tr id="Flow_ManualBreak-Row" class="Flow_MBStRows" style="display: none;"><td colspan="2">
+                        	<input type="text" id="Flow_ManualBreak-Input" class="Flow_StyleSettings">
+                        </td></tr>
+                        <tr class="BlankRow Flow_MBStRows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                        	<td colspan="2">Color:&nbsp;<button id="Flow_ColorInstruction-Btn" class="btn btn-primary Help-Btn Flows Color">?</button>
+	                        	<select id="Flow_ColorScheme-Select" class="Flow_StyleSettings" style="width:57%;">
+										<option value="Black">All Black</option>
+										<!-- <option value="Greys">Greys</option>
+										<option value="Greens">Greens</option>
+										<option value="Reds">Reds</option>
+										<option value="Blues">Blues</option>
+										<option value="Purples">Purples</option>
+										<option value="Custom">Custom</option> -->
+										<option value="Blues">Blues</option>
+										<option value="Greens">Greens</option>
+										<option value="Greys">Greys</option>
+										<option value="Oranges">Oranges</option>
+										<option value="Purples">Purples</option>
+										<option value="Reds">Reds</option>
+										<option value="PuBu">Purple-Blue</option>
+										<option value="RdPu">Red-Purple</option>
+										<option value="YlGn">Yellow-Green</option>
+										<option value="YlGnBu">Yellow-Green-Blue</option>
+										<option value="YlOrRd">Yellow-Orange-Red</option>
+										<option value="PiYG">Pink-Yellow-Green </option>
+										<option value="PRGn">Purple-Green</option>
+										<option value="RdBu">Red-Blue</option>
+										<option value="RdYlBu">Red-Yellow-Blue</option>
+										<option value="Custom">Custom</option>
+								</select>
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" id="Flow_FlipLgClr-CB">
+									<label class="form-check-label" for="formCheck-1">Flip</label>
+								</div>
+                        	</td>
+                        </tr>
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                        	<td>Fill opacity (%):&nbsp;<button id="Flow_FillOpacityInstruction-Btn" class="btn btn-primary Help-Btn Flows FillOpacity">?</button></td>
+                        	<td>
+                        		<input type="number" id="Flow_FillOpacity-Input" class="Flow_StyleSettings SmallerBoxes" value="100" min="0" max="100">
+                        	</td>
+                        </tr>
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="Flow_CustomColor-Rows">
+                        	<td>Min color: <button id="Flow_MinColorInstruction-Btn" class="btn btn-primary Help-Btn Flows MinColor">?</button></td>
+                        	<td>
+	                        	<input type="color" id="Flow_MinCustomColor-Input" class="SmallerBoxes"/>
+	                        </td>
+                        </tr>
+                        <tr class="BlankRow Flow_CustomColor-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr class="Flow_CustomColor-Rows">
+	                        <td>Max color: <button id="Flow_MaxColorInstruction-Btn" class="btn btn-primary Help-Btn Flows MaxColor">?</button></td>
+	                        <td>
+	                        	<input type="color" id="Flow_MaxCustomColor-Input" class="SmallerBoxes"/>
+	                        </td>
+                        </tr>
+                        <tr class="BlankRow Flow_CustomColor-Rows">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                        	<td>Min width: <button id="Flow_MinWidthInstruction-Btn" class="btn btn-primary Help-Btn Flows MinWidth">?</button></td>
+                        	<td>
+	                        	<input type="number" id="Flow_FlowWidth_Min-Input" class="StrokeWidthControl SmallerBoxes" value="4" min="1" max="8">
+	                        </td>
+                        </tr>
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+	                        <td>Max width: <button id="Flow_MaxWidthInstruction-Btn" class="btn btn-primary Help-Btn Flows MaxWidth">?</button></td>
+	                        <td>
+	                        	<input type="number" id="Flow_FlowWidth_Max-Input" class="StrokeWidthControl SmallerBoxes" value="14" min="5" max="20">
+	                        </td>
+                        </tr>
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                        	<td>Stroke color: <button id="Flow_StrokeColorInstruction-Btn" class="btn btn-primary Help-Btn Flows StrokeColor">?</button></td>
+                        	<td>
+	                        	<input type="color" id="Flow_StrokeColor-Input" class="SmallerBoxes" value="#ffffff">
+	                        </td>
+                        </tr>
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+	                        <td>Stroke width: <button id="Flow_StrokeWidthInstruction-Btn" class="btn btn-primary Help-Btn Flows StrokeWidth">?</button></td>
+	                        <td>
+	                        	<input type="number" id="Flow_StrokeWidth-Input" class="SmallerBoxes" value="0.5" max="5" min="0">
+	                        </td>
+                        </tr>
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                        	<td>Legend title: <button id="Flow_LegendTitleInstruction-Btn" class="btn btn-primary Help-Btn Flows LegendTitle">?</button></td>
+                        	<td>
+	                        	<input type="text" id="Flow_LegendTitle-Input" class="TableInputBoxes" value="Flow Legend">
+	                        </td>
+                        </tr>
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                        	<td>Decimal places: <button id="Flow_DecimalPlacesInstruction-Btn" class="btn btn-primary Help-Btn Flows DecimalPlaces">?</button></td>
+                        	<td>
+	                        	<input type="number" id="Flow_LegendDP-Input" class="StrokeWidthControl SmallerBoxes" value="0" min="0" max="5">
+	                        </td>
+                        </tr>
+                        <tr class="BlankRow">
+                            <td colspan="2">&nbsp;</td>
+                        </tr>
+                        
+                        <tr style="display: none;"><td colspan="2">
+                        	<div class="form-check"><input class="form-check-input" type="checkbox" id="Flow_DisplayAsAbs-CB"><label class="form-check-label" for="formCheck-1">Create a change flow map<br></label></div>
+                        </td></tr>
+                        
+                        <tr>
+                            <td colspan="2" style="text-align: center;">
+                            <button class="btn btn-primary PointAndFlowMapBtns" style="font-size: 0.99em;" type="button">Map Flows</button>
+                            <button id="CleanFlows-Btn" class="btn btn-primary" style="font-size: 0.99em;" type="button">Clean Flows</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+		    </div>
+   		</div>
+		</div>
+		<!-- Build this container to achieve min-left of side bar button -->
+		<div id="SideBarBtnContainer-Div">
+			<div id="SideBarBtn-Div" class="ol-control">
+				<button id="SideBar-Btn"><</button>
+			</div>
+		</div>
+		<div id="Error-Block" class="info-blocks white-popup mfp-with-anim mfp-hide InfoBoxes" style="width: 35%;">
+			<h1 class="text-left">Error</h1>
+            <p id="ErrorMessage-P" class="text-left">Error.</p>
+        </div>
+        <div id="FlowUnmatched-Block" class="info-blocks white-popup mfp-with-anim mfp-hide InfoBoxes" style="width: 35%;">
+			<h1 class="text-left">Error: Nodes and flows do NOT match!</h1>
+            <p id="FlowUnmatched-P" class="text-left">Please make sure the origin and destination IDs used in flow csv file exist in the node file. Please upload your files and select the matching ID columns.</p>
+        </div>
+        <div id="CPM_JointTable-Block" class="inline-popups info-blocks white-popup mfp-with-anim mfp-hide" style="width: 35%;">
+        	<h1 class="text-center" style="height:unset;">Region Join Results</h1>
+            <p class="text-left">Number of features:&nbsp;<span id="NumFeatures-Span"></span></p>
+            <p class="text-left">Number of joint features:&nbsp;<span id="NumJoint-Span"></span></p>
+            <p class="text-left">Number of disjoint features:&nbsp;<span id="NumDisjoint-Span"></span></p>
+        </div>
+        <div id="Welcome-Block" class="info-blocks white-popup mfp-with-anim mfp-hide" style="width: 65%; height: 65%; top: 0;">
+			<img id="WelcomeBackground-Img" src="assets/img/WelcomeBackground.png" alt="Welcome" style="width: 100%; height: 100%">
+			<button id="GetStarted-Btn" class="btn btn-primary" style="z-index:1;">Get Started</button> 
+			<button id="SkipTutorial-Btn" class="btn btn-primary" style="z-index:1;">Skip Tutorial</button>
+        </div>
+        <div id="ScaleBar-Div"></div>
+        <div id="TabHelper-Block"> TEST</div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/support/jquery-3.4.1.min.js"></script>
+    <script src="assets/js/support/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/support/jquery-ui.min.js"></script>
+    <script src="assets/js/support/d3.js"></script>
+    <script src="assets/js/support/d3-geo-projection.v1.min.js"></script>
+    <script src="assets/js/support/d3-legend.min.js"></script>
+    <!-- <script src="assets/js/support/d3.v4.js"> </script>-->
+    <script src="assets/js/support/topojson.min.js"></script>
+    <script src="assets/js/support/simple-statistics.min.js"></script>
+    <script src="assets/js/support/ol.js"></script>
+    <script src="assets/js/support/proj4.js"></script>
+    <script src="assets/js/support/html2canvas.js"></script>
+    <script src="https://js.arcgis.com/4.19/"></script>
+    <script src="assets/js/support/colorbrewer.js"></script>
+    <script src="assets/js/DataCommute.js"></script>
+    <script src="assets/js/PageControl.js"></script>
+    <script src="assets/js/LoadAndSetInstructions.js"></script>
+    <script src="assets/js/BaseMapInit.js"></script>
+    <script src="assets/js/Map.js"></script>
+    <script src="assets/js/LoadChoroplethMap.js"></script>
+    <script src="assets/js/DrawChoroplethMap.js"></script>
+    <script src="assets/js/LoadPoints.js"></script>
+    <script src="assets/js/DrawPoints.js"></script>
+    <script src="assets/js/LoadFlows.js"></script>
+    <script src="assets/js/DrawFlows.js"></script>
+    <script src="assets/js/DrawTitle.js"></script>
+    <script src="assets/js/LoadAndDrawReference.js"></script>
+    <script src="assets/js/AddNorthArrow.js"></script>
+    <script src="assets/js/AddProjectionLabel.js"></script>
+    <script src="assets/js/Legend.js"></script>
+    <script src="assets/js/DrawChoroplethMapLegend.js"></script>
+    <script src="assets/js/DrawPointLegend.js"></script>
+    <script src="assets/js/DrawFlowLegend.js"></script>
+    <script src="assets/js/ExceptionHandling.js"></script>
+    <script src="assets/js/Export.js"></script>
+    <script src="assets/js/LoadProject.js"></script>
+    <script src="assets/js/SaveProject.js"></script>
+    <script src="assets/js/Tools.js"></script>
+</body>
+
+</html>
