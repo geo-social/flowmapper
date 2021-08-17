@@ -1,4 +1,6 @@
 # FlowMapper
+## Code
+The front end of FlowMapper is built with HTML, CSS, JavaScript and the bootstrap template. OpenLayers is used for the mapping framework including the base maps and basic interactive map functions, and D3 (Data-Driven Documents) (Bostock, Ogievetsky, & Heer, 2011) is used to create the interactive maps that include polygon, point and flow symbol vectors. FlowMapper utilizes a Java back-end design connected with a PostgreSQL/PostGIS database with an Apache Tomcat server. 
 
 ## Data
 The data used in the FlowMapper paper is published here. The datasets included are as follows:
