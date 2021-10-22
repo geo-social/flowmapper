@@ -5,9 +5,9 @@ The front end of FlowMapper is built with HTML, CSS, JavaScript and the Bootstra
 ## Data
 The data used in the FlowMapper paper is published here. The datasets included are as follows:
 
-* [Banana food flows](Bananas/): Banana food flows within South America from 2019 (FAO, 2021).
-* [Family tree flows](Family-tree/): Family tree data movement from 1887-1924 within the U.S. (Koylu et al., 2020)
-* [Bikeshare flows](Bikeshare): Bikeshare flows within Chicago from April 2021 (Divvy system data, 2021).
+* [Banana food flows](Data/Bananas/): Banana food flows within South America from 2019 (FAO, 2021).
+* [Family tree flows](Data/Family Tree/): Family tree data movement from 1887-1924 within the U.S. (Koylu et al., 2020)
+* [Bikeshare flows](Data/Bikeshare): Bikeshare flows within Chicago from April 2021 (Divvy system data, 2021).
 
 ## About
 FlowMapper is an interactive application for mapping geospatial data that include flows, or origin-destination data. In FlowMapper, upload regions (polygons) as a geojson, a region attribute dataset (csv), a node dataset (csv) that includes coordinates in WGS84, and a flow dataset (csv). For the regions, the geojson data should have an ID that joins to the region attribute dataset, and the flows should have an origin ID field and a destination ID field that join to the nodes dataset on a matching ID.
