@@ -6,7 +6,7 @@ The front end of FlowMapper is built with HTML, CSS, JavaScript and the Bootstra
 The data used in the FlowMapper paper is published here. The datasets included are as follows:
 
 * [Banana food flows](Data/Bananas/): Banana food flows within South America from 2019 (FAO, 2021).
-* [Family tree flows](Data/Family Tree/): Family tree data movement from 1887-1924 within the U.S. (Koylu et al., 2020)
+* [Family tree flows](Data/FamilyTree/): Family tree data movement from 1887-1924 within the U.S. (Koylu et al., 2020)
 * [Bikeshare flows](Data/Bikeshare): Bikeshare flows within Chicago from April 2021 (Divvy system data, 2021).
 
 ## About
