@@ -34,6 +34,6 @@ By Caglar Koylu, Geng Tian, and Mary Windsor
 
 * FAO. (2021). Food and Agriculture Organization of United Nations (FAO). Retrieved from http://www.fao.org/faostat/en/#data/TM
 
-* Koylu, C., Guo, D., Huang, Y., Kasakoff, A., & Grieve, J. (2020). Connecting family trees to construct a         population-scale and longitudinal geo-social network for the U.S. International Journal of Geographical Information Science. doi:10.1080/13658816.2020.1821885
+* Koylu, C., Guo, D., Huang, Y., Kasakoff, A., & Grieve, J. (2020). Connecting family trees to construct a population-scale and longitudinal geo-social network for the U.S. International Journal of Geographical Information Science. doi:10.1080/13658816.2020.1821885
 
 
