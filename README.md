@@ -28,7 +28,7 @@ geo-social@uiowa.edu
 By Caglar Koylu, Geng Tian, and Mary Windsor
 
 ## References
-* Koylu, C., Tian, G., & Windsor, M. (2021). FlowMapper.org: A web-based framework for designing origin-destination flow maps. Journal of Maps. doi:10.1080/17445647.2021.1996479
+* Koylu, C., Tian, G., & Windsor, M. (2022). FlowMapper.org: A web-based framework for designing origin-destination flow maps. Journal of Maps. doi:10.1080/17445647.2021.1996479
 
 * Divvy system data. Retrieved May 13, 2021, from https://www.divvybikes.com/system-data
 
