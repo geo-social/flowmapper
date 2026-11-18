@@ -3,12 +3,19 @@
 The front end of FlowMapper is built with HTML, CSS, JavaScript and the Bootstrap template. OpenLayers is used for the mapping framework including the base maps and basic interactive map functions, and D3 (Data-Driven Documents) (Bostock, Ogievetsky, & Heer, 2011) is used to create the interactive maps that include polygon, point and flow symbol vectors. FlowMapper utilizes a Java back-end design connected with a PostgreSQL/PostGIS database with an Apache Tomcat server. 
 
 ## Data
-The data used in the FlowMapper paper is published here. The datasets included are as follows:
+The data used in the FlowMapper paper is published here, together with newer example datasets. The datasets included are as follows:
 
 * [Banana food flows](Data/Bananas/): Banana food flows within South America from 2019 (FAO, 2021).
 * [Family tree flows](Data/FamilyTree/): Family tree data movement from 1887-1924 within the U.S. (Koylu et al., 2020)
 * [Bikeshare flows](Data/Bikeshare): Bikeshare flows within Chicago from April 2021 (Divvy system data, 2021).
 * [Migration flows](Data/Migration): Internal Migration flows between 2005 and 2010 across various continents (WHO, 2015).
+* [Refugee flows](Data/Refugees/): Refugees from Ukraine (2022–2024) and Syria (2015, 2024) by country of asylum, with population, GDP and percent foreign-born of every country (UNHCR, 2026; World Bank, 2026).
+* [Disaster migration](Data/DisasterMigration/): County-to-county migration before, during and after Hurricane Katrina (2004–2008) and the Camp Fire in Butte County, California (2017–2020) (IRS, 2026).
+
+Most dataset folders follow the same naming: `flowmapper_*.json` is a FlowMapper project file (open it with **File > Project > Load Project**), `flowmapper_*.png` is a picture of that map, and `flows_*`, `nodes_*` and `regions_*` are the input files for flows, nodes and regions. The scripts that build the newer datasets are in [Data/scripts](Data/scripts/).
+
+## Teaching
+[Teaching](Teaching/) has two ready-to-use assignments built on these data: an undergraduate exercise on refugee flows from Ukraine (with a Syria variant), and a five-part graduate project on migration after disasters.
 
 ## About
 FlowMapper is an interactive application for mapping geospatial data that include flows, or origin-destination data. In FlowMapper, upload regions (polygons) as a geojson, a region attribute dataset (csv), a node dataset (csv) that includes coordinates in WGS84, and a flow dataset (csv). For the regions, the geojson data should have an ID that joins to the region attribute dataset, and the flows should have an origin ID field and a destination ID field that join to the nodes dataset on a matching ID.
@@ -36,5 +43,15 @@ By Caglar Koylu, Geng Tian, and Mary Windsor
 * FAO. (2021). Food and Agriculture Organization of United Nations (FAO). Retrieved from http://www.fao.org/faostat/en/#data/TM
 
 * Koylu, C., Guo, D., Huang, Y., Kasakoff, A., & Grieve, J. (2020). Connecting family trees to construct a population-scale and longitudinal geo-social network for the U.S. International Journal of Geographical Information Science. doi:10.1080/13658816.2020.1821885
+
+* IRS. (2026). SOI Tax Stats: Migration Data, county-to-county files 2004–2008 and 2017–2020. Internal Revenue Service, Statistics of Income. Retrieved November 2026, from https://www.irs.gov/statistics/soi-tax-stats-migration-data
+
+* UNHCR. (2026). Refugee Data Finder. United Nations High Commissioner for Refugees. Retrieved November 2026, from https://www.unhcr.org/refugee-statistics/
+
+* World Bank. (2026). World Development Indicators. Retrieved November 2026, from https://databank.worldbank.org/source/world-development-indicators
+
+* Natural Earth. 1:50m Cultural Vectors, Admin 0 – Countries. Retrieved November 2026, from https://www.naturalearthdata.com/
+
+* U.S. Census Bureau. Gazetteer Files, counties 2010 and 2019. Retrieved November 2026, from https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html
 
 

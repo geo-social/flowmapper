@@ -1,0 +1,486 @@
+fips,county,state,lon,lat,katrina_area
+01001,Autauga County,AL,-86.64449,32.53638,no
+01003,Baldwin County,AL,-87.74607,30.65922,no
+01015,Calhoun County,AL,-85.82251,33.77171,no
+01025,Clarke County,AL,-87.81862,31.68552,no
+01045,Dale County,AL,-85.60948,31.43065,no
+01047,Dallas County,AL,-87.11436,32.33354,no
+01051,Elmore County,AL,-86.14274,32.59723,no
+01055,Etowah County,AL,-86.03442,34.04764,no
+01069,Houston County,AL,-85.2964,31.15819,no
+01073,Jefferson County,AL,-86.89654,33.55344,no
+01081,Lee County,AL,-85.35305,32.60406,no
+01089,Madison County,AL,-86.55108,34.76424,no
+01097,Mobile County,AL,-88.19657,30.68457,no
+01099,Monroe County,AL,-87.38327,31.58033,no
+01101,Montgomery County,AL,-86.20383,32.20365,no
+01103,Morgan County,AL,-86.8464,34.45448,no
+01113,Russell County,AL,-85.18698,32.28981,no
+01117,Shelby County,AL,-86.6781,33.26294,no
+01119,Sumter County,AL,-88.20006,32.59748,no
+01125,Tuscaloosa County,AL,-87.52286,33.2902,no
+02020,Anchorage Municipality,AK,-149.27435,61.17755,no
+04013,Maricopa County,AZ,-112.49553,33.34654,no
+04015,Mohave County,AZ,-113.74969,35.7177,no
+04019,Pima County,AZ,-111.78302,32.12824,no
+04027,Yuma County,AZ,-113.9109,32.77394,no
+05007,Benton County,AR,-94.25619,36.33782,no
+05019,Clark County,AR,-93.1762,34.05331,no
+05031,Craighead County,AR,-90.63041,35.82827,no
+05033,Crawford County,AR,-94.23622,35.58304,no
+05035,Crittenden County,AR,-90.31533,35.21188,no
+05041,Desha County,AR,-91.24443,33.82875,no
+05045,Faulkner County,AR,-92.32465,35.14636,no
+05051,Garland County,AR,-93.14692,34.57886,no
+05069,Jefferson County,AR,-91.9307,34.2777,no
+05085,Lonoke County,AR,-91.89413,34.75511,no
+05091,Miller County,AR,-93.90151,33.3055,no
+05115,Pope County,AR,-93.03154,35.4553,no
+05119,Pulaski County,AR,-92.31652,34.77399,no
+05125,Saline County,AR,-92.67446,34.64852,no
+05131,Sebastian County,AR,-94.27499,35.19698,no
+05143,Washington County,AR,-94.21842,35.97121,no
+05145,White County,AR,-91.75316,35.25472,no
+06001,Alameda County,CA,-121.9133,37.64808,no
+06013,Contra Costa County,CA,-121.95154,37.91948,no
+06019,Fresno County,CA,-119.65502,36.76101,no
+06029,Kern County,CA,-118.72951,35.34663,no
+06031,Kings County,CA,-119.81553,36.07248,no
+06037,Los Angeles County,CA,-118.26186,34.1964,no
+06041,Marin County,CA,-122.74597,38.05182,no
+06053,Monterey County,CA,-121.31557,36.24011,no
+06059,Orange County,CA,-117.77721,33.67569,no
+06061,Placer County,CA,-120.72272,39.06203,no
+06065,Riverside County,CA,-116.00224,33.72983,no
+06067,Sacramento County,CA,-121.34044,38.45001,no
+06071,San Bernardino County,CA,-116.1812,34.85722,no
+06073,San Diego County,CA,-116.77612,33.0236,no
+06075,San Francisco County,CA,-123.03223,37.72724,no
+06077,San Joaquin County,CA,-121.27224,37.93503,no
+06081,San Mateo County,CA,-122.37154,37.41466,no
+06085,Santa Clara County,CA,-121.69062,37.22078,no
+06095,Solano County,CA,-121.93959,38.26723,no
+06111,Ventura County,CA,-119.13314,34.35874,no
+06115,Yuba County,CA,-121.34428,39.27003,no
+08001,Adams County,CO,-104.33187,39.87432,no
+08005,Arapahoe County,CO,-104.33173,39.64463,no
+08013,Boulder County,CO,-105.39838,40.09483,no
+08031,Denver County,CO,-104.88062,39.76185,no
+08035,Douglas County,CO,-104.9262,39.32643,no
+08041,El Paso County,CO,-104.52747,38.82738,no
+08059,Jefferson County,CO,-105.2456,39.58646,no
+08069,Larimer County,CO,-105.48213,40.66309,no
+09001,Fairfield County,CT,-73.36676,41.2281,no
+09003,Hartford County,CT,-72.73292,41.80605,no
+09009,New Haven County,CT,-72.9002,41.34972,no
+10001,Kent County,DE,-75.50298,39.09709,no
+10003,New Castle County,DE,-75.64413,39.57592,no
+11001,District of Columbia,DC,-77.01709,38.90415,no
+12001,Alachua County,FL,-82.35722,29.67574,no
+12005,Bay County,FL,-85.63135,30.23756,no
+12009,Brevard County,FL,-80.70038,28.29828,no
+12011,Broward County,FL,-80.47666,26.19352,no
+12019,Clay County,FL,-81.85815,29.98712,no
+12021,Collier County,FL,-81.40088,26.11871,no
+12031,Duval County,FL,-81.64811,30.33524,no
+12033,Escambia County,FL,-87.33904,30.61166,no
+12057,Hillsborough County,FL,-82.34957,27.90659,no
+12069,Lake County,FL,-81.71228,28.76411,no
+12071,Lee County,FL,-81.89225,26.55213,no
+12073,Leon County,FL,-84.2778,30.45931,no
+12081,Manatee County,FL,-82.36578,27.48139,no
+12083,Marion County,FL,-82.0431,29.2028,no
+12086,Miami-Dade County,FL,-80.49904,25.61049,no
+12087,Monroe County,FL,-81.20678,25.60104,no
+12091,Okaloosa County,FL,-86.59419,30.66586,no
+12095,Orange County,FL,-81.3233,28.51444,no
+12097,Osceola County,FL,-81.13931,28.05903,no
+12099,Palm Beach County,FL,-80.44867,26.64576,no
+12101,Pasco County,FL,-82.45571,28.30202,no
+12103,Pinellas County,FL,-82.73952,27.90312,no
+12105,Polk County,FL,-81.69278,27.95312,no
+12111,St. Lucie County,FL,-80.44336,27.38078,no
+12113,Santa Rosa County,FL,-87.01426,30.70363,no
+12115,Sarasota County,FL,-82.36584,27.18439,no
+12117,Seminole County,FL,-81.13198,28.69008,no
+12127,Volusia County,FL,-81.16181,29.05762,no
+12131,Walton County,FL,-86.17661,30.63121,no
+13015,Bartow County,GA,-84.83819,34.24092,no
+13021,Bibb County,GA,-83.69419,32.80884,no
+13039,Camden County,GA,-81.63652,30.91636,no
+13045,Carroll County,GA,-85.08053,33.58224,no
+13051,Chatham County,GA,-81.09177,31.97476,no
+13057,Cherokee County,GA,-84.47506,34.24432,no
+13059,Clarke County,GA,-83.36713,33.95223,no
+13063,Clayton County,GA,-84.41298,33.55224,no
+13067,Cobb County,GA,-84.57417,33.93994,no
+13071,Colquitt County,GA,-83.76974,31.18976,no
+13073,Columbia County,GA,-82.25134,33.55056,no
+13077,Coweta County,GA,-84.76214,33.3529,no
+13089,DeKalb County,GA,-84.22634,33.77066,no
+13095,Dougherty County,GA,-84.21444,31.53507,no
+13097,Douglas County,GA,-84.76594,33.69932,no
+13113,Fayette County,GA,-84.49394,33.41272,no
+13115,Floyd County,GA,-85.21373,34.26368,no
+13117,Forsyth County,GA,-84.12734,34.22514,no
+13121,Fulton County,GA,-84.46818,33.79003,no
+13127,Glynn County,GA,-81.49652,31.21275,no
+13135,Gwinnett County,GA,-84.02294,33.9591,no
+13139,Hall County,GA,-83.8185,34.31759,no
+13151,Henry County,GA,-84.15444,33.45288,no
+13153,Houston County,GA,-83.66286,32.45838,no
+13179,Liberty County,GA,-81.45797,31.80724,no
+13185,Lowndes County,GA,-83.26897,30.83368,no
+13215,Muscogee County,GA,-84.87495,32.5102,no
+13217,Newton County,GA,-83.85519,33.54404,no
+13223,Paulding County,GA,-84.86698,33.9209,no
+13237,Putnam County,GA,-83.37179,33.32106,no
+13245,Richmond County,GA,-82.075,33.36149,no
+13247,Rockdale County,GA,-84.02637,33.65208,no
+13255,Spalding County,GA,-84.28607,33.26239,no
+13285,Troup County,GA,-85.02836,33.03448,no
+13297,Walton County,GA,-83.73422,33.78265,no
+15003,Honolulu County,HI,-158.20198,21.46136,no
+16001,Ada County,ID,-116.24446,43.44786,no
+16039,Elmore County,ID,-115.47075,43.39483,no
+17019,Champaign County,IL,-88.1972,40.13915,no
+17031,Cook County,IL,-87.64546,41.89429,no
+17043,DuPage County,IL,-88.08604,41.85206,no
+17089,Kane County,IL,-88.42804,41.93959,no
+17097,Lake County,IL,-87.43612,42.32644,no
+17111,McHenry County,IL,-88.45224,42.3243,no
+17119,Madison County,IL,-89.9002,38.82708,no
+17143,Peoria County,IL,-89.76736,40.786,no
+17163,St. Clair County,IL,-89.92855,38.4702,no
+17167,Sangamon County,IL,-89.66231,39.75638,no
+17197,Will County,IL,-87.97846,41.44847,no
+18043,Floyd County,IN,-85.91147,38.31794,no
+18089,Lake County,IN,-87.37434,41.47224,no
+18097,Marion County,IN,-86.13579,39.78298,no
+18141,St. Joseph County,IN,-86.28816,41.6177,no
+19013,Black Hawk County,IA,-92.30606,42.47289,no
+19103,Johnson County,IA,-91.58881,41.66874,no
+19153,Polk County,IA,-93.56972,41.68428,no
+19163,Scott County,IA,-90.62229,41.64168,no
+20091,Johnson County,KS,-94.82233,38.88391,no
+20173,Sedgwick County,KS,-97.45945,37.68381,no
+20177,Shawnee County,KS,-95.75566,39.0418,no
+21035,Calloway County,KY,-88.27409,36.62098,no
+21067,Fayette County,KY,-84.45844,38.04016,no
+21093,Hardin County,KY,-85.96318,37.69584,no
+21111,Jefferson County,KY,-85.65762,38.18953,no
+21239,Woodford County,KY,-84.74815,38.04279,no
+22001,Acadia Parish,LA,-92.41104,30.2915,no
+22003,Allen Parish,LA,-92.8196,30.65274,no
+22005,Ascension Parish,LA,-90.91002,30.20295,no
+22007,Assumption Parish,LA,-91.05053,29.89988,no
+22009,Avoyelles Parish,LA,-91.9938,31.08509,no
+22011,Beauregard Parish,LA,-93.34025,30.64502,no
+22013,Bienville Parish,LA,-93.06151,32.34427,no
+22015,Bossier Parish,LA,-93.61798,32.6962,no
+22017,Caddo Parish,LA,-93.88242,32.5772,no
+22019,Calcasieu Parish,LA,-93.35802,30.22956,no
+22025,Catahoula Parish,LA,-91.8467,31.66652,no
+22029,Concordia Parish,LA,-91.62631,31.4698,no
+22031,De Soto Parish,LA,-93.7408,32.05925,no
+22033,East Baton Rouge Parish,LA,-91.09317,30.544,no
+22035,East Carroll Parish,LA,-91.23414,32.73017,no
+22037,East Feliciana Parish,LA,-91.04343,30.83978,no
+22039,Evangeline Parish,LA,-92.40409,30.72069,no
+22041,Franklin Parish,LA,-91.6721,32.13828,no
+22043,Grant Parish,LA,-92.56172,31.59779,no
+22045,Iberia Parish,LA,-91.84271,29.60601,no
+22047,Iberville Parish,LA,-91.36315,30.28839,no
+22049,Jackson Parish,LA,-92.55667,32.30448,no
+22051,Jefferson Parish,LA,-90.03623,29.5033,yes
+22053,Jefferson Davis Parish,LA,-92.81622,30.26953,no
+22055,Lafayette Parish,LA,-92.06417,30.20651,no
+22057,Lafourche Parish,LA,-90.39485,29.49199,no
+22061,Lincoln Parish,LA,-92.66208,32.60115,no
+22063,Livingston Parish,LA,-90.72747,30.44042,no
+22065,Madison Parish,LA,-91.24073,32.36582,no
+22067,Morehouse Parish,LA,-91.8004,32.82001,no
+22069,Natchitoches Parish,LA,-93.08611,31.73498,no
+22071,Orleans Parish,LA,-89.93901,30.06864,yes
+22073,Ouachita Parish,LA,-92.1548,32.47749,no
+22075,Plaquemines Parish,LA,-89.29849,29.40234,yes
+22077,Pointe Coupee Parish,LA,-91.60462,30.70832,no
+22079,Rapides Parish,LA,-92.53595,31.1932,no
+22083,Richland Parish,LA,-91.75837,32.41812,no
+22085,Sabine Parish,LA,-93.55923,31.56021,no
+22087,St. Bernard Parish,LA,-89.26349,29.91811,yes
+22089,St. Charles Parish,LA,-90.35931,29.91383,no
+22091,St. Helena Parish,LA,-90.70935,30.82142,no
+22093,St. James Parish,LA,-90.79396,30.02482,no
+22095,St. John the Baptist Parish,LA,-90.50468,30.11747,no
+22097,St. Landry Parish,LA,-91.98927,30.58344,no
+22099,St. Martin Parish,LA,-91.61148,30.12143,no
+22101,St. Mary Parish,LA,-91.4638,29.62935,no
+22103,St. Tammany Parish,LA,-89.95196,30.41002,yes
+22105,Tangipahoa Parish,LA,-90.40663,30.62158,no
+22107,Tensas Parish,LA,-91.34258,32.00149,no
+22109,Terrebonne Parish,LA,-90.84419,29.33327,no
+22111,Union Parish,LA,-92.37565,32.82935,no
+22113,Vermilion Parish,LA,-92.29009,29.78687,no
+22115,Vernon Parish,LA,-93.18152,31.11056,no
+22117,Washington Parish,LA,-90.04625,30.85214,no
+22119,Webster Parish,LA,-93.33982,32.73215,no
+22121,West Baton Rouge Parish,LA,-91.30981,30.46405,no
+22125,West Feliciana Parish,LA,-91.42101,30.8727,no
+23005,Cumberland County,ME,-70.33038,43.80835,no
+24003,Anne Arundel County,MD,-76.56051,38.99337,no
+24005,Baltimore County,MD,-76.61657,39.44317,no
+24017,Charles County,MD,-77.01543,38.47285,no
+24021,Frederick County,MD,-77.39763,39.47043,no
+24027,Howard County,MD,-76.92441,39.25226,no
+24031,Montgomery County,MD,-77.20306,39.13738,no
+24033,Prince George's County,MD,-76.84727,38.82588,no
+24510,Baltimore city,MD,-76.61052,39.30021,no
+25001,Barnstable County,MA,-70.21108,41.79882,no
+25005,Bristol County,MA,-71.08706,41.74858,no
+25009,Essex County,MA,-70.86511,42.64271,no
+25017,Middlesex County,MA,-71.39651,42.47948,no
+25021,Norfolk County,MA,-71.17988,42.1697,no
+25025,Suffolk County,MA,-71.02017,42.33196,no
+25027,Worcester County,MA,-71.94028,42.31169,no
+26049,Genesee County,MI,-83.70637,43.02108,no
+26065,Ingham County,MI,-84.37381,42.60353,no
+26077,Kalamazoo County,MI,-85.53285,42.24627,no
+26081,Kent County,MI,-85.54745,43.0325,no
+26099,Macomb County,MI,-82.91087,42.67147,no
+26125,Oakland County,MI,-83.38421,42.66045,no
+26161,Washtenaw County,MI,-83.84463,42.25233,no
+26163,Wayne County,MI,-83.26195,42.28466,no
+27037,Dakota County,MN,-93.06248,44.67089,no
+27053,Hennepin County,MN,-93.47518,45.00606,no
+27123,Ramsey County,MN,-93.10014,45.01525,no
+28001,Adams County,MS,-91.35178,31.48622,no
+28005,Amite County,MS,-90.79554,31.20393,no
+28021,Claiborne County,MS,-90.91542,31.97281,no
+28023,Clarke County,MS,-88.68596,32.04845,no
+28025,Clay County,MS,-88.78333,33.66173,no
+28029,Copiah County,MS,-90.44876,31.86692,no
+28031,Covington County,MS,-89.5489,31.63333,no
+28033,DeSoto County,MS,-89.99324,34.87427,no
+28035,Forrest County,MS,-89.25945,31.18858,no
+28039,George County,MS,-88.64227,30.85543,no
+28041,Greene County,MS,-88.63481,31.21285,no
+28045,Hancock County,MS,-89.47985,30.39144,yes
+28047,Harrison County,MS,-89.08338,30.41654,yes
+28049,Hinds County,MS,-90.4659,32.26792,no
+28051,Holmes County,MS,-90.0912,33.12594,no
+28059,Jackson County,MS,-88.61999,30.45849,yes
+28061,Jasper County,MS,-89.11943,32.01699,no
+28063,Jefferson County,MS,-91.04388,31.73363,no
+28065,Jefferson Davis County,MS,-89.82663,31.56473,no
+28067,Jones County,MS,-89.16726,31.62104,no
+28071,Lafayette County,MS,-89.4859,34.3493,no
+28073,Lamar County,MS,-89.51495,31.19714,no
+28075,Lauderdale County,MS,-88.66045,32.404,no
+28077,Lawrence County,MS,-90.10753,31.55001,no
+28081,Lee County,MS,-88.68089,34.28896,no
+28083,Leflore County,MS,-90.29493,33.54979,no
+28085,Lincoln County,MS,-90.45357,31.53522,no
+28087,Lowndes County,MS,-88.43972,33.47142,no
+28089,Madison County,MS,-90.03416,32.63437,no
+28091,Marion County,MS,-89.82174,31.23013,no
+28099,Neshoba County,MS,-89.11927,32.75252,no
+28101,Newton County,MS,-89.11841,32.40197,no
+28105,Oktibbeha County,MS,-88.87615,33.42231,no
+28107,Panola County,MS,-89.96306,34.36521,no
+28109,Pearl River County,MS,-89.58683,30.77379,no
+28111,Perry County,MS,-88.98876,31.16931,no
+28113,Pike County,MS,-90.39772,31.17752,no
+28115,Pontotoc County,MS,-89.03724,34.22708,no
+28117,Prentiss County,MS,-88.52224,34.62087,no
+28121,Rankin County,MS,-89.94655,32.26206,no
+28127,Simpson County,MS,-89.91771,31.9025,no
+28129,Smith County,MS,-89.49497,32.01903,no
+28131,Stone County,MS,-89.1123,30.79018,no
+28133,Sunflower County,MS,-90.59509,33.60553,no
+28143,Tunica County,MS,-90.37177,34.6522,no
+28147,Walthall County,MS,-90.10343,31.16449,no
+28149,Warren County,MS,-90.85179,32.357,no
+28151,Washington County,MS,-90.94443,33.27313,no
+28153,Wayne County,MS,-88.68206,31.64476,no
+28157,Wilkinson County,MS,-91.32557,31.16025,no
+28159,Winston County,MS,-89.03739,33.07872,no
+28163,Yazoo County,MS,-90.38793,32.76568,no
+29019,Boone County,MO,-92.31078,38.98966,no
+29047,Clay County,MO,-94.4215,39.31555,no
+29077,Greene County,MO,-93.34064,37.2582,no
+29095,Jackson County,MO,-94.34251,39.00723,no
+29165,Platte County,MO,-94.76147,39.3787,no
+29183,St. Charles County,MO,-90.67492,38.7811,no
+29189,St. Louis County,MO,-90.44595,38.6407,no
+29510,St. Louis city,MO,-90.24458,38.6357,no
+30013,Cascade County,MT,-111.35057,47.31644,no
+31055,Douglas County,NE,-96.15407,41.29709,no
+31109,Lancaster County,NE,-96.68866,40.78355,no
+31153,Sarpy County,NE,-96.10912,41.11506,no
+32003,Clark County,NV,-115.01382,36.21424,no
+32031,Washoe County,NV,-119.71032,40.70331,no
+34001,Atlantic County,NJ,-74.63376,39.46935,no
+34003,Bergen County,NJ,-74.07452,40.95909,no
+34005,Burlington County,NJ,-74.66301,39.87579,no
+34007,Camden County,NJ,-74.96125,39.80235,no
+34013,Essex County,NJ,-74.24614,40.78722,no
+34017,Hudson County,NJ,-74.07863,40.73138,no
+34023,Middlesex County,NJ,-74.40758,40.43959,no
+34027,Morris County,NJ,-74.54743,40.85858,no
+34031,Passaic County,NJ,-74.30031,41.03376,no
+34039,Union County,NJ,-74.3087,40.65987,no
+35001,Bernalillo County,NM,-106.66906,35.054,no
+35035,Otero County,NM,-105.78108,32.58878,no
+35049,Santa Fe County,NM,-105.96644,35.51372,no
+36005,Bronx County,NY,-73.85294,40.84871,no
+36029,Erie County,NY,-78.77819,42.75276,no
+36047,Kings County,NY,-73.95078,40.63513,no
+36055,Monroe County,NY,-77.66466,43.46448,no
+36059,Nassau County,NY,-73.58938,40.72969,no
+36061,New York County,NY,-73.97017,40.77656,no
+36067,Onondaga County,NY,-76.19612,43.00653,no
+36081,Queens County,NY,-73.83793,40.65856,no
+36103,Suffolk County,NY,-72.69222,40.94355,no
+36119,Westchester County,NY,-73.74591,41.15277,no
+37021,Buncombe County,NC,-82.53043,35.60937,no
+37025,Cabarrus County,NC,-80.55287,35.38784,no
+37051,Cumberland County,NC,-78.82872,35.05019,no
+37063,Durham County,NC,-78.87792,36.03659,no
+37067,Forsyth County,NC,-80.25729,36.13167,no
+37081,Guilford County,NC,-79.78866,36.07906,no
+37119,Mecklenburg County,NC,-80.83383,35.24686,no
+37129,New Hanover County,NC,-77.87138,34.17747,no
+37133,Onslow County,NC,-77.5033,34.76346,no
+37135,Orange County,NC,-79.11936,36.0625,no
+37147,Pitt County,NC,-77.3724,35.59106,no
+37179,Union County,NC,-80.53013,34.9915,no
+37183,Wake County,NC,-78.65062,35.78985,no
+37191,Wayne County,NC,-78.00483,35.36274,no
+38101,Ward County,ND,-101.54054,48.21669,no
+39035,Cuyahoga County,OH,-81.72422,41.76039,no
+39049,Franklin County,OH,-83.00826,39.96945,no
+39057,Greene County,OH,-83.89489,39.68748,no
+39061,Hamilton County,OH,-84.54419,39.19693,no
+39113,Montgomery County,OH,-84.29054,39.75522,no
+40027,Cleveland County,OK,-97.32833,35.20312,no
+40031,Comanche County,OK,-98.4766,34.66263,no
+40065,Jackson County,OK,-99.41221,34.59395,no
+40109,Oklahoma County,OK,-97.4094,35.55461,no
+40143,Tulsa County,OK,-95.94173,36.12012,no
+41039,Lane County,OR,-122.89768,43.92828,no
+41051,Multnomah County,OR,-122.41717,45.54769,no
+41067,Washington County,OR,-123.09762,45.55354,no
+42003,Allegheny County,PA,-79.98092,40.46892,no
+42017,Bucks County,PA,-75.10706,40.33689,no
+42029,Chester County,PA,-75.74973,39.97396,no
+42045,Delaware County,PA,-75.39879,39.91667,no
+42091,Montgomery County,PA,-75.3702,40.21,no
+42101,Philadelphia County,PA,-75.13335,40.00938,no
+44005,Newport County,RI,-71.28406,41.50273,no
+44007,Providence County,RI,-71.57824,41.87049,no
+45013,Beaufort County,SC,-80.68932,32.35815,no
+45015,Berkeley County,SC,-79.95366,33.2077,no
+45019,Charleston County,SC,-79.94248,32.80046,no
+45035,Dorchester County,SC,-80.4047,33.08219,no
+45045,Greenville County,SC,-82.37208,34.89264,no
+45063,Lexington County,SC,-81.27285,33.89255,no
+45079,Richland County,SC,-80.89657,34.02978,no
+45083,Spartanburg County,SC,-81.99105,34.93324,no
+45085,Sumter County,SC,-80.38247,33.91605,no
+47009,Blount County,TN,-83.92297,35.68818,no
+47037,Davidson County,TN,-86.78479,36.16913,no
+47045,Dyer County,TN,-89.39831,36.0542,no
+47065,Hamilton County,TN,-85.2023,35.15919,no
+47093,Knox County,TN,-83.93772,35.99273,no
+47113,Madison County,TN,-88.83342,35.60606,no
+47119,Maury County,TN,-87.07776,35.6157,no
+47125,Montgomery County,TN,-87.38089,36.50035,no
+47141,Putnam County,TN,-85.49693,36.14081,no
+47149,Rutherford County,TN,-86.41721,35.84337,no
+47155,Sevier County,TN,-83.52195,35.79128,no
+47157,Shelby County,TN,-89.8954,35.18379,no
+47165,Sumner County,TN,-86.45852,36.47001,no
+47167,Tipton County,TN,-89.76371,35.5003,no
+47187,Williamson County,TN,-86.89696,35.89497,no
+48005,Angelina County,TX,-94.61106,31.25195,no
+48027,Bell County,TX,-97.48192,31.04211,no
+48029,Bexar County,TX,-98.52015,29.44867,no
+48037,Bowie County,TX,-94.42238,33.44605,no
+48039,Brazoria County,TX,-95.43465,29.16782,no
+48041,Brazos County,TX,-96.30239,30.65672,no
+48053,Burnet County,TX,-98.2012,30.78962,no
+48061,Cameron County,TX,-97.47896,26.10292,no
+48085,Collin County,TX,-96.57815,33.19388,no
+48091,Comal County,TX,-98.2552,29.80302,no
+48099,Coryell County,TX,-97.79802,31.39118,no
+48113,Dallas County,TX,-96.77842,32.76699,no
+48121,Denton County,TX,-97.11905,33.205,no
+48139,Ellis County,TX,-96.79834,32.34728,no
+48141,El Paso County,TX,-106.24139,31.7664,no
+48157,Fort Bend County,TX,-95.77102,29.5266,no
+48167,Galveston County,TX,-94.89486,29.22871,no
+48181,Grayson County,TX,-96.6757,33.62451,no
+48183,Gregg County,TX,-94.81628,32.4864,no
+48187,Guadalupe County,TX,-97.94903,29.58321,no
+48199,Hardin County,TX,-94.39315,30.32961,no
+48201,Harris County,TX,-95.39304,29.85727,no
+48203,Harrison County,TX,-94.37442,32.54799,no
+48209,Hays County,TX,-98.02927,30.06122,no
+48215,Hidalgo County,TX,-98.18099,26.39638,no
+48231,Hunt County,TX,-96.08381,33.12344,no
+48245,Jefferson County,TX,-94.14933,29.854,no
+48251,Johnson County,TX,-97.36482,32.37951,no
+48257,Kaufman County,TX,-96.28838,32.59894,no
+48273,Kleberg County,TX,-97.66062,27.43874,no
+48291,Liberty County,TX,-94.82268,30.16219,no
+48303,Lubbock County,TX,-101.81994,33.61147,no
+48309,McLennan County,TX,-97.20147,31.54949,no
+48321,Matagorda County,TX,-95.99776,28.78334,no
+48339,Montgomery County,TX,-95.50352,30.30236,no
+48347,Nacogdoches County,TX,-94.62025,31.62056,no
+48355,Nueces County,TX,-97.52164,27.73941,no
+48361,Orange County,TX,-93.89336,30.12092,no
+48367,Parker County,TX,-97.8059,32.7771,no
+48375,Potter County,TX,-101.8938,35.39867,no
+48397,Rockwall County,TX,-96.4075,32.88922,no
+48409,San Patricio County,TX,-97.51716,28.01178,no
+48423,Smith County,TX,-95.26963,32.37709,no
+48439,Tarrant County,TX,-97.29129,32.77204,no
+48441,Taylor County,TX,-99.89322,32.29568,no
+48451,Tom Green County,TX,-100.46136,31.40158,no
+48453,Travis County,TX,-97.69127,30.23951,no
+48469,Victoria County,TX,-96.9712,28.79637,no
+48477,Washington County,TX,-96.41027,30.21508,no
+48485,Wichita County,TX,-98.71685,33.9911,no
+48491,Williamson County,TX,-97.60507,30.64903,no
+49011,Davis County,UT,-112.20212,41.03704,no
+49035,Salt Lake County,UT,-111.92424,40.66788,no
+51003,Albemarle County,VA,-78.55351,38.02418,no
+51013,Arlington County,VA,-77.1007,38.87834,no
+51041,Chesterfield County,VA,-77.58585,37.37843,no
+51059,Fairfax County,VA,-77.27612,38.83374,no
+51087,Henrico County,VA,-77.30033,37.43752,no
+51107,Loudoun County,VA,-77.63886,39.08113,no
+51153,Prince William County,VA,-77.47889,38.70233,no
+51179,Stafford County,VA,-77.45904,38.41893,no
+51199,York County,VA,-76.39553,37.22091,no
+51510,Alexandria city,VA,-77.08203,38.81834,no
+51550,Chesapeake city,VA,-76.30179,36.67938,no
+51650,Hampton city,VA,-76.29715,37.04803,no
+51700,Newport News city,VA,-76.52172,37.07598,no
+51710,Norfolk city,VA,-76.24464,36.92302,no
+51740,Portsmouth city,VA,-76.35627,36.85943,no
+51760,Richmond city,VA,-77.47601,37.5314,no
+51810,Virginia Beach city,VA,-76.02402,36.77932,no
+53011,Clark County,WA,-122.4859,45.77167,no
+53029,Island County,WA,-122.6705,48.15844,no
+53033,King County,WA,-121.83238,47.49355,no
+53035,Kitsap County,WA,-122.64964,47.63969,no
+53053,Pierce County,WA,-122.14471,47.04072,no
+53061,Snohomish County,WA,-121.76641,48.05491,no
+53063,Spokane County,WA,-117.40439,47.62038,no
+54039,Kanawha County,WV,-81.52352,38.32806,no
+55025,Dane County,WI,-89.41785,43.06747,no
+55079,Milwaukee County,WI,-87.48158,43.01766,no
+56021,Laramie County,WY,-104.6604,41.29283,no
