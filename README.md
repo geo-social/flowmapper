@@ -1,6 +1,25 @@
 # FlowMapper
-## Code
-The front end of FlowMapper is built with HTML, CSS, JavaScript and the Bootstrap template. OpenLayers is used for the mapping framework including the base maps and basic interactive map functions, and D3 (Data-Driven Documents) (Bostock, Ogievetsky, & Heer, 2011) is used to create the interactive maps that include polygon, point and flow symbol vectors. FlowMapper utilizes a Java back-end design connected with a PostgreSQL/PostGIS database with an Apache Tomcat server. 
+
+[FlowMapper.org](https://flowmapper.org) is a web application for designing origin-destination flow maps. This repository holds its example data, teaching materials and its Python package.
+
+## Python package
+
+[`python/`](python/) is **flowmapper.org**, the Python companion to FlowMapper.org: read, analyse, map and write FlowMapper project files. A project built in Python opens on FlowMapper.org, and every project saved there loads in Python.
+
+```bash
+pip install flowmapper.org
+```
+```python
+import flowmapper_org as fm
+p = fm.Project.load("Data/Refugees/Ukraine/flowmapper_ukraine_refugees_2022.json")
+p.save_map("map.png")
+```
+
+The [example notebooks](python/notebooks/) use the data in this repository; start with `00_parameters_guide`. See the [package README](python/README.md) for everything else.
+
+## Web application
+
+The front end of FlowMapper.org is built with HTML, CSS, JavaScript and the Bootstrap template. OpenLayers is used for the mapping framework including the base maps and basic interactive map functions, and D3 (Data-Driven Documents) (Bostock, Ogievetsky, & Heer, 2011) is used to create the interactive maps that include polygon, point and flow symbol vectors. FlowMapper utilizes a Java back-end design connected with a PostgreSQL/PostGIS database with an Apache Tomcat server. The web application's source code is no longer published in this repository.
 
 ## Data
 The data used in the FlowMapper paper is published here, together with newer example datasets. The datasets included are as follows:

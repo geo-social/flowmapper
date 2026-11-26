@@ -1,0 +1,73 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]   # >=77: SPDX `license` expression and `license-files` (PEP 639)
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flowmapper.org"   # pip install flowmapper.org (PyPI normalises it to flowmapper-org); import flowmapper_org
+dynamic = ["version"]
+description = "Python companion to FlowMapper.org: read, analyse, map and write FlowMapper project files."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_LICENSES.md"]
+requires-python = ">=3.9"
+authors = [{ name = "GeoSocial Lab, University of Iowa" }]
+keywords = ["flow map", "origin-destination", "migration", "cartography", "community detection", "GIS",
+            "flowmapper"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
+    "Topic :: Scientific/Engineering :: GIS",
+    "Topic :: Scientific/Engineering :: Visualization",
+    "Framework :: Jupyter",
+]
+dependencies = [
+    "numpy>=1.22",
+    "pandas>=1.4",
+    "matplotlib>=3.5",
+    "shapely>=2.0",
+    "pyproj>=3.3",
+]
+
+[project.optional-dependencies]
+basemap = ["contextily>=1.3"]
+interactive = ["anywidget>=0.9"]
+dev = ["pytest>=7", "pytest-cov", "hypothesis>=6", "mini-racer>=0.12", "build"]
+
+[project.scripts]
+flowmapper-org = "flowmapper_org.cli:main"
+
+[project.urls]
+Homepage = "https://flowmapper.org"
+"Example data" = "https://github.com/geo-social/flowmapper"
+Paper = "https://doi.org/10.1080/17445647.2021.1996479"
+Repository = "https://github.com/geo-social/flowmapper/tree/main/python"
+Changelog = "https://github.com/geo-social/flowmapper/blob/main/python/CHANGELOG.md"
+Issues = "https://github.com/geo-social/flowmapper/issues"
+
+[tool.setuptools.dynamic]
+version = { attr = "flowmapper_org._version.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+flowmapper_org = ["_data/*.json", "_data/*.csv", "interactive/_static/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "parity: compares Python results with the live FlowMapper JavaScript (needs mini-racer and the FlowMapper sources)",
+    "slow: long-running tests",
+    "realdata: uses project files from the FlowMapper data folder",
+    "sync: checks that the package is in sync with the FlowMapper sources",
+    "portfolio: the example data on GitHub (set FLOWMAPPER_PORTFOLIO to its Data folder)",
+]

@@ -1,0 +1,1 @@
+PROJCS["nonsense",GEOGCS["x",DATUM["y",SPHEROID["z",1,0]]],PROJECTION["No_Such_Projection"]]
