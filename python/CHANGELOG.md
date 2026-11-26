@@ -33,12 +33,12 @@ before 0.3.0). Each release names the FlowMapper.org version it mirrors (`FLOWMA
 - Sync check against FlowMapper.org 2.1: in sync (2026-11-26); no JavaScript changed.
 - **Released from github.com/geo-social/flowmapper** (`python/`, replacing the web-app code there):
   `devtools/export_public.py` exports the release from the development repository; GitHub Actions test it
-  on Linux, macOS and Windows (Python 3.9 and 3.13) and publish to PyPI with trusted publishing on a
+  on Linux, macOS and Windows (Python 3.10 and 3.14) and publish to PyPI with trusted publishing on a
   `vX.Y.Z` tag. The notebooks find the example data of that repository by themselves.
 - **Packaging for PyPI:** MIT `LICENSE` (same as the FlowMapper repository) and `THIRD_PARTY_LICENSES.md`
   for the bundled OpenLayers, proj4js, d3 and ColorBrewer files and the ported d3/Delaunator/topojson code;
   both ship in the wheel (`license = "MIT"`, `license-files`, setuptools ≥ 77). Classifiers for Python
-  3.9–3.13, and project links (FlowMapper.org, example data, paper).
+  3.10–3.14 (**Python ≥ 3.10**: 3.9 is end-of-life), and project links (FlowMapper.org, example data, paper).
 
 ## 0.2.1 — 2026-11-18 (mirrors FlowMapper.org 2.1 with N-60)
 

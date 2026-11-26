@@ -30,7 +30,7 @@ pip install -e ".[interactive]"  # + notebook widget (anywidget)
 pip install -e ".[dev]"          # + test tools (pytest, hypothesis, mini-racer)
 ```
 
-Python ≥ 3.9. Core dependencies: numpy, pandas, matplotlib, shapely, pyproj.
+Python ≥ 3.10. Core dependencies: numpy, pandas, matplotlib, shapely, pyproj.
 
 ## Quick start
 

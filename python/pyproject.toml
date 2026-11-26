@@ -9,7 +9,7 @@ description = "Python companion to FlowMapper.org: read, analyse, map and write 
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE", "THIRD_PARTY_LICENSES.md"]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 authors = [{ name = "GeoSocial Lab, University of Iowa" }]
 keywords = ["flow map", "origin-destination", "migration", "cartography", "community detection", "GIS",
             "flowmapper"]
@@ -17,11 +17,11 @@ classifiers = [
     "Development Status :: 4 - Beta",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Operating System :: OS Independent",
     "Intended Audience :: Science/Research",
     "Intended Audience :: Education",
