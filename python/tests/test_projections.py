@@ -38,7 +38,9 @@ def test_crs_and_round_trip(name):
         lon, lat = 10.0, 20.0
     x, y = P.project_lonlat(name, lon, lat)
     lo, la = P.unproject(name, x, y)
-    tol = 1e-7 if name == "ukBNG" else 1e-9      # PROJ inverts the Helmert shift approximately
+    # 1e-7 degrees is about 1 cm. PROJ inverts the ukBNG Helmert shift approximately, and PROJ < 9.8
+    # (pyproj < 3.8, e.g. on Python 3.10) inverts the ellipsoidal laea / gall to ~6e-9 degrees.
+    tol = 1e-7
     assert lo == pytest.approx(lon, abs=tol) and la == pytest.approx(lat, abs=tol)
     xs, ys = P.project_lonlat(name, np.array([lon, lon]), np.array([lat, lat]))
     assert xs.shape == (2,) and xs[0] == pytest.approx(x)
