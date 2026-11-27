@@ -4,7 +4,10 @@
 
 ## Python package
 
-[`python/`](python/) is **flowmapper.org**, the Python companion to FlowMapper.org: read, analyse, map and write FlowMapper project files. A project built in Python opens on FlowMapper.org, and every project saved there loads in Python.
+[![PyPI](https://img.shields.io/pypi/v/flowmapper.org?label=PyPI)](https://pypi.org/project/flowmapper-org/)
+[![Python](https://img.shields.io/pypi/pyversions/flowmapper.org)](https://pypi.org/project/flowmapper-org/)
+
+[`python/`](python/) is **flowmapper.org** ([on PyPI](https://pypi.org/project/flowmapper-org/)), the Python companion to FlowMapper.org: read, analyse, map and write FlowMapper project files. A project built in Python opens on FlowMapper.org, and every project saved there loads in Python.
 
 ```bash
 pip install flowmapper.org
@@ -56,6 +59,8 @@ By Caglar Koylu, Geng Tian, and Mary Windsor
 
 ## References
 * Koylu, C., Tian, G., & Windsor, M. (2022). FlowMapper.org: A web-based framework for designing origin-destination flow maps. Journal of Maps. doi:10.1080/17445647.2021.1996479
+
+* GeoSocial Lab, University of Iowa. (2026). flowmapper.org: Python companion to FlowMapper.org (Version 0.3.0) [Python package]. Python Package Index. https://pypi.org/project/flowmapper-org/
 
 * Divvy system data. Retrieved May 13, 2021, from https://www.divvybikes.com/system-data
 
